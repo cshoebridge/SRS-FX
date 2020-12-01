@@ -17,10 +17,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fxmls/reviewStart.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("fxmls/mainMenu.fxml"));
+        Scene mainMenu = new Scene(root);
+        mainMenu.getStylesheets().add(getClass().getResource("css/mainMenu.css").toExternalForm());
         stage.setTitle("Wurmwell SRS");
-        stage.setScene(new Scene(root));stage.show();
+        stage.setScene(mainMenu);
+        stage.show();
     }
 
     public static void changeSceneOnWindow(Stage targetStage, String targetFXML){
@@ -35,8 +37,6 @@ public class App extends Application {
 
 
     public static void main(String[] args) {
-        if (Reviewer.tryInitialiseReview()){
-            launch(args);
-        }
+        launch(args);
     }
 }

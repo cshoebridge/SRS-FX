@@ -9,7 +9,6 @@ import java.util.*;
 
 public class Reviewer {
 
-    private final Scanner scanner = new Scanner(System.in);
     private static String deckFilePath;
     public static String getDeckFilePath() {
         return deckFilePath;
@@ -26,8 +25,8 @@ public class Reviewer {
     private static IntervalHandler intervalHandler;
 
     //region initialise review
-    public static boolean tryInitialiseReview(){
-        deckFilePath = DeckFileParser.DECK_FOLDER_PATH + "testDeck" + FileExtensions.JSON;
+    public static boolean tryInitialiseReview(String deckName){
+        deckFilePath = DeckFileParser.DECK_FOLDER_PATH + deckName + FileExtensions.JSON;
         Deck deckToReview = DeckFileParser.DECK_FILE_PARSER_SINGLETON.deserializeDeck(deckFilePath);
         if (deckToReview == null){
             return false;

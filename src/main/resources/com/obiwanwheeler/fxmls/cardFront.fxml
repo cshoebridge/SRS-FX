@@ -5,10 +5,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.CardFrontController">
    <top>
@@ -32,18 +32,22 @@
         </menus>
       </MenuBar>
    </top>
-   <bottom>
-      <Button fx:id="showAnswerButton" mnemonicParsing="false" onAction="#onShowAnswerButtonPressed" text="show answer" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="targetLanguageSentence" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sample text" wrappingWidth="392.97265625" />
+            <Text fx:id="targetLanguageSentence" strokeType="OUTSIDE" strokeWidth="0.0" text="sample text">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Text>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" onAction="#onShowAnswerButtonPressed" text="Show Answer" />
+        </items>
+      </ToolBar>
+   </bottom>
 </BorderPane>
