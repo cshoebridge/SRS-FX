@@ -15,7 +15,6 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("fxmls/mainMenu.fxml"));
         Scene mainMenu = new Scene(root);
-        mainMenu.getStylesheets().add(getClass().getResource("css/mainMenu.css").toExternalForm());
         stage.setTitle("Wurmwell SRS");
         stage.setScene(mainMenu);
         stage.show();

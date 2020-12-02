@@ -8,6 +8,7 @@ import com.obiwanwheeler.objects.Deck;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Objects;
 
 public final class DeckFileParser {
 
@@ -36,5 +37,11 @@ public final class DeckFileParser {
             System.out.println("unable to deserialize deck file");
             return null;
         }
+    }
+
+    public String[] getAlLDeckNames(){
+        File deckFolder = new File("src/main/resources/com/obiwanwheeler/decks");
+        String[] deckNames = deckFolder.list();
+        return Objects.requireNonNullElseGet(deckNames, () -> new String[]{});
     }
 }
