@@ -11,11 +11,10 @@ public class DeckCreator {
 
     Scanner scanner = new Scanner(System.in);
 
-    public void createNewDeck(){
-        String deckName = askForName();
+    public static void createNewDeck(String deckName){
         //TODO in FX give option to choose option group
-        String optionGroupName = askForOptionGroupName();
-        Deck newDeck = new Deck(deckName, findOptionGroupFile(optionGroupName));
+        //String optionGroupName = askForOptionGroupName();
+        Deck newDeck = new Deck(deckName, null);
         Serializer.SERIALIZER_SINGLETON.serializeToNew(newDeck);
     }
 

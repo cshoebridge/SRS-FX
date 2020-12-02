@@ -1,0 +1,5 @@
+{
+  "deckName" : "babobeDeck",
+  "cards" : [ ],
+  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/default-option-group.json"
+}

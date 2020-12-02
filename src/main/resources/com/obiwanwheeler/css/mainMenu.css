@@ -1,9 +1,12 @@
-.button{
+#deckButton{
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: transparent;
     -fx-text-fill: #000000;
-    -fx-font: 15px sans-serif;
-    -fx-font-weight : bolder;
+    -fx-font: 12px system;
+}
+
+#deckButton:hover {
+    -fx-underline: true;
 }
