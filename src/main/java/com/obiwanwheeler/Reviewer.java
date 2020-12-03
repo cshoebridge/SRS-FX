@@ -4,7 +4,7 @@ import com.obiwanwheeler.utilities.*;
 import com.obiwanwheeler.objects.Card;
 import com.obiwanwheeler.objects.Deck;
 
-import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Reviewer {
@@ -36,6 +36,10 @@ public class Reviewer {
 
         intervalHandler = new IntervalHandler(deckToReview.getOptionGroup());
 
+        if (deckToReview.getLastDateReviewed().isBefore(LocalDate.now())){
+            deckToReview.setNewCardsLeft(deckToReview.getOptionGroup().getNumberOfNewCardsToLearn());
+        }
+
         cardsToReviewToday = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getCardsToReviewToday(deckToReview);
 
         numberOfCardsLeftToBeReviewed = cardsToReviewToday.size();
@@ -46,6 +50,8 @@ public class Reviewer {
         updatedDeck = new Deck(new LinkedList<>());
         updatedDeck.setDeckName(sourceDeck.getDeckName());
         updatedDeck.setOptionGroupFilePath(sourceDeck.getOptionGroupFilePath());
+        updatedDeck.setLastDateReviewed(LocalDate.now());
+        updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
     }
 
     private static void insertUnchangedCards(Deck sourceDeck){
@@ -64,7 +70,13 @@ public class Reviewer {
     }
 
     public static void processCardMarkedGood(Card markedCard){
-        intervalHandler.increaseInterval(markedCard);
+        if (markedCard.getState() == Card.CardState.NEW){
+            updatedDeck.setNewCardsLeft(updatedDeck.getNewCardsLeft() - 1);
+            intervalHandler.moveFromNewToLearningQueue(markedCard);
+        }
+        else{
+            intervalHandler.increaseCardInterval(markedCard);
+        }
 
         if (checkIfCardIsFinishedForSession(markedCard)){
             finishReviewingCardForSession(markedCard);

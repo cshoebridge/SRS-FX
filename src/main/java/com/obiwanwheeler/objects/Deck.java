@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.obiwanwheeler.interfaces.Renamable;
 import com.obiwanwheeler.interfaces.SerializableObject;
+import com.obiwanwheeler.utilities.DeckFileParser;
 import com.obiwanwheeler.utilities.OptionGroupFileParser;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +20,9 @@ public class Deck implements SerializableObject, Renamable {
     private String optionGroupFilePath;
     @JsonIgnore private OptionGroup optionGroup;
 
-    public static final String DECK_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/decks/";
+    private int newCardsLeft;
+
+    private LocalDate lastDateReviewed;
 
     //used in IDE
     public Deck(List<Card> cards) {
@@ -37,11 +41,16 @@ public class Deck implements SerializableObject, Renamable {
     @JsonCreator
     public Deck(@JsonProperty("deckName") String deckName,
                 @JsonProperty("cards") List<Card> cards,
-                @JsonProperty("optionGroupFilePath") String optionGroupFilePath)
+                @JsonProperty("optionGroupFilePath") String optionGroupFilePath,
+                @JsonProperty("newCardsLeft") int cardsLeftToReviewToday,
+                @JsonProperty("lastDateReviewed") LocalDate lastDateReviewed)
                 {
         this.deckName = deckName;
         this.cards = cards;
+        this.optionGroupFilePath = optionGroupFilePath;
         this.optionGroup = OptionGroupFileParser.deserializeOptionGroup(optionGroupFilePath);
+        this.newCardsLeft = cardsLeftToReviewToday;
+        this.lastDateReviewed = lastDateReviewed;
     }
 
     public String getDeckName() {
@@ -73,9 +82,25 @@ public class Deck implements SerializableObject, Renamable {
         return optionGroup;
     }
 
+    public int getNewCardsLeft() {
+        return newCardsLeft;
+    }
+
+    public void setNewCardsLeft(int newCardsLeft) {
+        this.newCardsLeft = newCardsLeft;
+    }
+
+    public LocalDate getLastDateReviewed() {
+        return lastDateReviewed;
+    }
+
+    public void setLastDateReviewed(LocalDate lastDateReviewed) {
+        this.lastDateReviewed = lastDateReviewed;
+    }
+
     @Override
     public String getFolderPath() {
-        return DECK_FOLDER_PATH;
+        return DeckFileParser.DECK_FOLDER_PATH;
     }
 
     @Override

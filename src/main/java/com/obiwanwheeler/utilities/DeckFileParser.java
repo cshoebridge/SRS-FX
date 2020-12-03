@@ -13,7 +13,6 @@ import java.util.Objects;
 public final class DeckFileParser {
 
     public static final String DECK_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/decks/";
-
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private DeckFileParser(){}

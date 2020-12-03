@@ -20,22 +20,12 @@ public final class IntervalHandler {
 
     //region when correct answer given
 
-    public void increaseInterval(Card cardToIncrease){
-
-        if (cardToIncrease.getState() == Card.CardState.NEW){
-            moveFromNewToLearningQueue(cardToIncrease);
-        }
-        else {
-            increaseCardInterval(cardToIncrease);
-        }
-    }
-
-    private void moveFromNewToLearningQueue(Card cardToMove){
+    public void moveFromNewToLearningQueue(Card cardToMove){
         cardToMove.setMinutesUntilNextReviewInThisSession(Duration.ofMinutes(intervalSteps.get(0)));
         cardToMove.setState(Card.CardState.LEARNING);
     }
 
-    private void increaseCardInterval(Card cardToIncrease){
+    public void increaseCardInterval(Card cardToIncrease){
         if (cardToIncrease.getState() == Card.CardState.LEARNT){
             updateLearntCardInterval(cardToIncrease);
             return;

@@ -27,9 +27,9 @@ public class DeckManipulator {
     }
 
     public List<Card> getCardsToReviewToday(Deck fullDeck){
-        int numberOfNewCardsToLearnToday = fullDeck.getOptionGroup().getNumberOfNewCardsToLearn();
-        List<Card> reappearingKnownCards = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getKnownCardsToBeReviewedToday(fullDeck);
-        List<Card> potentialNewCards = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getNewCards(fullDeck);
+        int numberOfNewCardsToLearnToday = fullDeck.getNewCardsLeft();
+        List<Card> reappearingKnownCards = getKnownCardsToBeReviewedToday(fullDeck);
+        List<Card> potentialNewCards = getNewCards(fullDeck);
 
         List<Card> cardsToReviewToday = new LinkedList<>();
 
