@@ -27,7 +27,7 @@ public class Reviewer {
     //region initialise review
     public static boolean tryInitialiseReview(String deckName){
         deckFilePath = DeckFileParser.DECK_FOLDER_PATH + deckName + FileExtensions.JSON;
-        Deck deckToReview = DeckFileParser.DECK_FILE_PARSER_SINGLETON.deserializeDeck(deckFilePath);
+        Deck deckToReview = DeckFileParser.deserializeDeck(deckFilePath);
         if (deckToReview == null){
             return false;
         }
@@ -37,6 +37,7 @@ public class Reviewer {
         intervalHandler = new IntervalHandler(deckToReview.getOptionGroup());
 
         cardsToReviewToday = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getCardsToReviewToday(deckToReview);
+
         numberOfCardsLeftToBeReviewed = cardsToReviewToday.size();
         return true;
     }

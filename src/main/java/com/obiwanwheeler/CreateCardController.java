@@ -29,7 +29,7 @@ public class CreateCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         deckDropDown.getItems().clear();
-        for(String name : DeckFileParser.DECK_FILE_PARSER_SINGLETON.getAlLDeckNames()){
+        for(String name : DeckFileParser.getAlLDeckNames()){
             deckDropDown.getItems().add(name.replace(".json", ""));
         }
     }

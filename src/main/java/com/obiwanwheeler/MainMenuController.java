@@ -41,9 +41,17 @@ public class MainMenuController implements Initializable {
         cardCreateStage.show();
     }
 
-    public void refreshList(){
+    @FXML private void onEditButtonPressed() throws IOException {
+        Parent deckSettingsParent = FXMLLoader.load(getClass().getResource("fxmls/deckSettings.fxml"));
+        Stage deckSettingsStage = new Stage();
+        deckSettingsStage.setScene(new Scene(deckSettingsParent));
+        deckSettingsStage.show();
+    }
+
+    //TODO make this look nicer, it's slightly poopy/ie.
+    public void refreshDeckList(){
         deckNamesVbox.getChildren().clear();
-        for(String name : DeckFileParser.DECK_FILE_PARSER_SINGLETON.getAlLDeckNames()){
+        for(String name : DeckFileParser.getAlLDeckNames()){
             Button deckButton = new Button(name.replace(".json", ""));
             deckButton.setOnAction(actionEvent -> {
                 String deckName = ((Button) actionEvent.getSource()).getText();
@@ -59,6 +67,6 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        refreshList();
+        refreshDeckList();
     }
 }

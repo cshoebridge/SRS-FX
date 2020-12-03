@@ -1,18 +1,18 @@
 package com.obiwanwheeler.objects;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.obiwanwheeler.interfaces.Renamable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 
 import java.util.List;
 
-public class OptionGroup implements SerializableObject {
+public class OptionGroup implements SerializableObject , Renamable {
 
     private String optionGroupName;
     private int graduatingIntervalInDays;
     private List<Integer> intervalSteps;
-    private int correctAnswerIncreaseInDays;
-    private int relapseDecreaseInDays;
     private int numberOfNewCardsToLearn;
 
     private static final String OPTION_GROUP_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/option-groups/";
@@ -21,15 +21,11 @@ public class OptionGroup implements SerializableObject {
     public OptionGroup(@JsonProperty("optionGroupName") String optionGroupName,
                        @JsonProperty("graduatingIntervalInDays") int graduatingIntervalInDays,
                        @JsonProperty("intervalSteps") List<Integer> intervalSteps,
-                       @JsonProperty("correctAnswerIncreaseInDays") int correctAnswerIncreaseInDays,
-                       @JsonProperty("relapseDecreaseInDays") int relapseDecreaseInDays,
                        @JsonProperty("numberOfNewCardsToLearn") int numberOfNewCardsToLearn)
     {
         this.optionGroupName = optionGroupName;
         this.graduatingIntervalInDays = graduatingIntervalInDays;
         this.intervalSteps = intervalSteps;
-        this.correctAnswerIncreaseInDays = correctAnswerIncreaseInDays;
-        this.relapseDecreaseInDays = relapseDecreaseInDays;
         this.numberOfNewCardsToLearn = numberOfNewCardsToLearn;
     }
 
@@ -57,22 +53,6 @@ public class OptionGroup implements SerializableObject {
         this.intervalSteps = intervalSteps;
     }
 
-    public int getCorrectAnswerIncreaseInDays() {
-        return correctAnswerIncreaseInDays;
-    }
-
-    public void setCorrectAnswerIncreaseInDays(int correctAnswerIncreaseInDays) {
-        this.correctAnswerIncreaseInDays = correctAnswerIncreaseInDays;
-    }
-
-    public int getRelapseDecreaseInDays() {
-        return relapseDecreaseInDays;
-    }
-
-    public void setRelapseDecreaseInDays(int relapseDecreaseInDays) {
-        this.relapseDecreaseInDays = relapseDecreaseInDays;
-    }
-
     public int getNumberOfNewCardsToLearn() {
         return numberOfNewCardsToLearn;
     }
@@ -91,13 +71,21 @@ public class OptionGroup implements SerializableObject {
         return getOptionGroupName();
     }
 
+    @Override
+    @JsonIgnore public void setName(String optionGroupName) {
+        this.optionGroupName = optionGroupName;
+    }
+
+    @Override
+    @JsonIgnore public String getName() {
+        return optionGroupName;
+    }
+
     //region builder class
     public static class Builder{
         private String optionGroupName;
         private int graduatingIntervalInDays;
         private List<Integer> intervalSteps;
-        private int correctAnswerIncreaseInDays;
-        private int relapseDecreaseInDays;
         private int numberOfNewCardsToLearn;
 
         public Builder optionGroupName(String optionGroupName){
@@ -115,23 +103,13 @@ public class OptionGroup implements SerializableObject {
             return this;
         }
 
-        public Builder correctAnswerIncreaseInDays(int correctAnswerIncreaseInDays) {
-            this.correctAnswerIncreaseInDays = correctAnswerIncreaseInDays;
-            return this;
-        }
-
-        public Builder relapseDecreaseInDays(int relapseDecreaseInDays) {
-            this.relapseDecreaseInDays = relapseDecreaseInDays;
-            return this;
-        }
-
         public Builder numberOfNewCardsToLearn(int numberOfNewCardsToLearn) {
             this.numberOfNewCardsToLearn = numberOfNewCardsToLearn;
             return this;
         }
 
         public OptionGroup build(){
-            return new OptionGroup(optionGroupName, graduatingIntervalInDays, intervalSteps, correctAnswerIncreaseInDays, relapseDecreaseInDays, numberOfNewCardsToLearn);
+            return new OptionGroup(optionGroupName, graduatingIntervalInDays, intervalSteps, numberOfNewCardsToLearn);
         }
     }
     //endregion

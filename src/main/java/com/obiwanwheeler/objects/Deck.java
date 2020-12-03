@@ -3,13 +3,14 @@ package com.obiwanwheeler.objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.obiwanwheeler.interfaces.Renamable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.utilities.OptionGroupFileParser;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class Deck implements SerializableObject {
+public class Deck implements SerializableObject, Renamable {
 
     private String deckName;
 
@@ -18,7 +19,6 @@ public class Deck implements SerializableObject {
     @JsonIgnore private OptionGroup optionGroup;
 
     public static final String DECK_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/decks/";
-
 
     //used in IDE
     public Deck(List<Card> cards) {
@@ -30,12 +30,7 @@ public class Deck implements SerializableObject {
     public Deck(String deckName, String optionGroupFilePath){
         this.deckName = deckName;
         this.cards = new LinkedList<>();
-        if (optionGroupFilePath == null || optionGroupFilePath.isEmpty()){
-            this.optionGroupFilePath = OptionGroupFileParser.DEFAULT_OPTION_GROUP_PATH;
-        }
-        else{
-            this.optionGroupFilePath = optionGroupFilePath;
-        }
+        this.optionGroupFilePath = optionGroupFilePath;
     }
 
     //used by Jackson
@@ -46,25 +41,14 @@ public class Deck implements SerializableObject {
                 {
         this.deckName = deckName;
         this.cards = cards;
-        if (optionGroupFilePath == null || optionGroupFilePath.isEmpty()){
-            this.optionGroupFilePath = OptionGroupFileParser.DEFAULT_OPTION_GROUP_PATH;
-        }
-        else{
-            this.optionGroupFilePath = optionGroupFilePath;
-        }
-        this.optionGroup = OptionGroupFileParser.OPTION_GROUP_FILE_PARSER_SINGLETON.deserializeOptionGroup(optionGroupFilePath);
-        if (this.optionGroup.getOptionGroupName().equals("default-option-group")){
-            this.optionGroupFilePath = OptionGroupFileParser.DEFAULT_OPTION_GROUP_PATH;
-        }
+        this.optionGroup = OptionGroupFileParser.deserializeOptionGroup(optionGroupFilePath);
     }
 
     public String getDeckName() {
         return deckName;
     }
 
-    public void setDeckName(String deckName) {
-        this.deckName = deckName;
-    }
+    public void setDeckName(String deckName) { this.deckName = deckName; }
 
     public List<Card> getCards() {
         return cards;
@@ -75,12 +59,7 @@ public class Deck implements SerializableObject {
     }
 
     public String getOptionGroupFilePath() {
-        if (optionGroupFilePath == null || optionGroupFilePath.isEmpty()){
-            return OptionGroupFileParser.DEFAULT_OPTION_GROUP_PATH;
-        }
-        else{
-            return optionGroupFilePath;
-        }
+        return optionGroupFilePath;
     }
 
     public void setOptionGroupFilePath(String optionGroupFilePath) {
@@ -88,11 +67,10 @@ public class Deck implements SerializableObject {
     }
 
     public OptionGroup getOptionGroup() {
+        if (optionGroup == null) {
+            return OptionGroupFileParser.DEFAULT_OPTION_GROUP;
+        }
         return optionGroup;
-    }
-
-    public void setOptionGroup(OptionGroup optionGroup){
-        this.optionGroup = optionGroup;
     }
 
     @Override
@@ -103,5 +81,15 @@ public class Deck implements SerializableObject {
     @Override
     public String getFileName() {
         return getDeckName();
+    }
+
+    @Override
+    @JsonIgnore public void setName(String deckName) {
+        this.deckName = deckName;
+    }
+
+    @Override
+    @JsonIgnore public String getName() {
+        return deckName;
     }
 }

@@ -1,66 +1,35 @@
 package com.obiwanwheeler.creators;
 
 import com.obiwanwheeler.objects.OptionGroup;
+import com.obiwanwheeler.utilities.FileExtensions;
+import com.obiwanwheeler.utilities.OptionGroupFileParser;
 import com.obiwanwheeler.utilities.Serializer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class OptionGroupCreator {
 
-    Scanner scanner = new Scanner(System.in);
-
-    public void createNewOptionGroup(){
-        String optionGroupName = askForName();
+    public static void createNewOptionGroup(String name){
         //TODO in FX give option to choose option group
-        OptionGroup newOptionGroup = new OptionGroup.Builder().optionGroupName(optionGroupName).graduatingIntervalInDays(askForGraduatingInterval())
-                                                    .intervalSteps(askForIntervalSteps()).correctAnswerIncreaseInDays(askForCorrectIncrease())
-                                                    .relapseDecreaseInDays(askForRelapseDecrease()).numberOfNewCardsToLearn(askForNewCardsPerDay()).build();
+        OptionGroup newOptionGroup = OptionGroupFileParser.DEFAULT_OPTION_GROUP;
+        Objects.requireNonNull(newOptionGroup).setOptionGroupName(name);
         Serializer.SERIALIZER_SINGLETON.serializeToNew(newOptionGroup);
     }
 
-    private String askForName(){
-        System.out.print("what do you want to name the new option group? : ");
-        return scanner.nextLine();
-    }
-
-    private int askForGraduatingInterval(){
-        System.out.print("what do you want it's graduating interval to be? : ");
-        int output = scanner.nextInt();
-        scanner.nextLine();
-        return output;
-    }
-
-    private List<Integer> askForIntervalSteps(){
-        List<Integer> steps = new ArrayList<>();
-        do {
-            System.out.print("enter next interval step : ");
-            steps.add(scanner.nextInt());
-            scanner.nextLine();
-            System.out.print("enter another step? (y/n) : ");
-        } while(scanner.nextLine().equals("y"));
-        return steps;
-    }
-
-    private int askForCorrectIncrease(){
-        System.out.print("what do you want it's correct answer increase in days to be? : ");
-        int output = scanner.nextInt();
-        scanner.nextLine();
-        return output;
-    }
-
-    private int askForRelapseDecrease(){
-        System.out.print("what do you want it's relapse decrease in days to be? : ");
-        int output = scanner.nextInt();
-        scanner.nextLine();
-        return output;
-    }
-
-    private int askForNewCardsPerDay(){
-        System.out.print("how many new cards should be introduced each day? : ");
-        int output = scanner.nextInt();
-        scanner.nextLine();
-        return output;
+    public static void editOptionsGroup(String name, String newSteps, int newCards, int newGradInterval){
+        OptionGroup groupToEdit = OptionGroupFileParser.deserializeOptionGroup(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + name + FileExtensions.JSON);
+        if (groupToEdit == null){
+            return;
+        }
+        groupToEdit.setOptionGroupName(name);
+        List<String> splitStepsString = Arrays.asList(newSteps.split(" "));
+        List<Integer> steps = splitStepsString.stream().map(Integer::parseInt).collect(Collectors.toList());
+        groupToEdit.setIntervalSteps(steps);
+        groupToEdit.setNumberOfNewCardsToLearn(newCards);
+        groupToEdit.setGraduatingIntervalInDays(newGradInterval);
+        Serializer.SERIALIZER_SINGLETON.serializeToExisting(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + name + FileExtensions.JSON, groupToEdit);
     }
 }

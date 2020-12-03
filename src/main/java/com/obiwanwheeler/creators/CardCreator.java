@@ -6,8 +6,6 @@ import com.obiwanwheeler.utilities.DeckFileParser;
 import com.obiwanwheeler.utilities.FileExtensions;
 import com.obiwanwheeler.utilities.Serializer;
 
-import java.util.Scanner;
-
 public class CardCreator {
 
     public static void createNewCard(String deckToAddToName, String front, String back){
@@ -23,7 +21,7 @@ public class CardCreator {
     }
 
     private static Deck getDeckToAddTo(String deckFilePath){
-        return DeckFileParser.DECK_FILE_PARSER_SINGLETON.deserializeDeck(deckFilePath);
+        return DeckFileParser.deserializeDeck(deckFilePath);
     }
 
     private static void rewriteDeck(String deckToAddToPath, Deck deckToRewrite){

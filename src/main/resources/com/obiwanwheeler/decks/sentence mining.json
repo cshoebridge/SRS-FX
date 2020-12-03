@@ -4,8 +4,14 @@
     "targetLanguageSentence" : "君のせいだよ！和也のせい！責任を取ればいいよね！",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-02",
-    "daysFromFirstSeenToNextReview" : "P1D",
+    "daysFromFirstSeenToNextReview" : "P4D",
     "nativeLanguageTranslation" : "It's your fault, Kazuya ! you should take responsibility!"
+  }, {
+    "targetLanguageSentence" : "彼女お借りします",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-03",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "High quality anime"
   } ],
-  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/default-option-group.json"
+  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/group2.json"
 }

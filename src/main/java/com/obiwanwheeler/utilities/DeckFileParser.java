@@ -12,15 +12,13 @@ import java.util.Objects;
 
 public final class DeckFileParser {
 
-    public static final DeckFileParser DECK_FILE_PARSER_SINGLETON = new DeckFileParser();
-
     public static final String DECK_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/decks/";
 
-    private final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private DeckFileParser(){}
 
-    public Deck deserializeDeck(String deckFilePath) {
+    public static Deck deserializeDeck(String deckFilePath) {
         File deckFile = new File(deckFilePath);
         Deck deserializedDeck;
 
@@ -39,8 +37,8 @@ public final class DeckFileParser {
         }
     }
 
-    public String[] getAlLDeckNames(){
-        File deckFolder = new File("src/main/resources/com/obiwanwheeler/decks");
+    public static String[] getAlLDeckNames(){
+        File deckFolder = new File(DECK_FOLDER_PATH);
         String[] deckNames = deckFolder.list();
         return Objects.requireNonNullElseGet(deckNames, () -> new String[]{});
     }

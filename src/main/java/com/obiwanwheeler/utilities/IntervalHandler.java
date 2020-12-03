@@ -10,17 +10,12 @@ import java.util.List;
 
 public final class IntervalHandler {
 
-    //TODO get this from config file
     private final List<Integer> intervalSteps;
     private final int graduatingIntervalInDays;
-    private final int correctAnswerIncreaseInDays;
-    private final int relapseDecreaseInDays;
 
     public IntervalHandler(OptionGroup config) {
         this.intervalSteps = config.getIntervalSteps();
         this.graduatingIntervalInDays = config.getGraduatingIntervalInDays();
-        this.correctAnswerIncreaseInDays = config.getCorrectAnswerIncreaseInDays();
-        this.relapseDecreaseInDays = config.getRelapseDecreaseInDays();
     }
 
     //region when correct answer given
@@ -57,6 +52,7 @@ public final class IntervalHandler {
 
     private void updateLearntCardInterval(Card cardToUpdate){
         //TODO make algorithm for calculating next interval better
+        int correctAnswerIncreaseInDays = 3;
         cardToUpdate.setDaysFromFirstSeenToNextReview(cardToUpdate.getDaysFromFirstSeenToNextReview().plusDays(correctAnswerIncreaseInDays));
     }
 
@@ -86,6 +82,7 @@ public final class IntervalHandler {
 
     public void relearnCard(Card relapsedCard){
         relapsedCard.setMinutesUntilNextReviewInThisSession(Duration.ofMinutes(10));
+        int relapseDecreaseInDays = 1;
         relapsedCard.setDaysFromFirstSeenToNextReview(relapsedCard.getDaysFromFirstSeenToNextReview().minusDays(relapseDecreaseInDays));
         if (relapsedCard.getDaysFromFirstSeenToNextReview().isNegative()) relapsedCard.setDaysFromFirstSeenToNextReview(Period.ofDays(1));
     }
