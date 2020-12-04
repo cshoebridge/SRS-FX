@@ -36,10 +36,6 @@ public class Reviewer {
 
         intervalHandler = new IntervalHandler(deckToReview.getOptionGroup());
 
-        if (deckToReview.getLastDateReviewed().isBefore(LocalDate.now())){
-            deckToReview.setNewCardsLeft(deckToReview.getOptionGroup().getNumberOfNewCardsToLearn());
-        }
-
         cardsToReviewToday = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getCardsToReviewToday(deckToReview);
 
         numberOfCardsLeftToBeReviewed = cardsToReviewToday.size();
@@ -51,7 +47,9 @@ public class Reviewer {
         updatedDeck.setDeckName(sourceDeck.getDeckName());
         updatedDeck.setOptionGroupFilePath(sourceDeck.getOptionGroupFilePath());
         updatedDeck.setLastDateReviewed(LocalDate.now());
-        updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
+        if (sourceDeck.getLastDateReviewed().isBefore(LocalDate.now())){
+            updatedDeck.setNewCardsLeft(sourceDeck.getOptionGroup().getNumberOfNewCardsToLearn());
+        }
     }
 
     private static void insertUnchangedCards(Deck sourceDeck){
