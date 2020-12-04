@@ -1,7 +1,7 @@
 package com.obiwanwheeler;
 
 import com.obiwanwheeler.creators.OptionGroupCreator;
-import com.obiwanwheeler.interfaces.Renamable;
+import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.objects.Deck;
 import com.obiwanwheeler.objects.OptionGroup;
@@ -12,11 +12,9 @@ import com.obiwanwheeler.utilities.Serializer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,17 +64,11 @@ public class DeckSettingsController implements Initializable {
 
     @FXML private void onMakeNewGroupButtonPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        URL path = getClass().getResource("fxmls/newOptionGroupPopup.fxml");
-        loader.setLocation(path);
-
-        Parent popupParent = loader.load();
-        Scene popupScene = new Scene(popupParent);
+        Scene popupScene = App.getSceneFromPath("fxmls/newOptionGroupPopup.fxml", loader);
 
         NewOptionGroupPopupController popupController = loader.getController();
         popupController.initController(this);
-        Stage popupStage = new Stage();
-        popupStage.setScene(popupScene);
-        popupStage.show();
+        App.createNewStage(popupScene);
     }
 
     @FXML private void onRenameGroupButtonPressed() throws IOException {
@@ -91,19 +83,13 @@ public class DeckSettingsController implements Initializable {
         }
     }
 
-    private <T extends Renamable & SerializableObject> void createRenamePopup(T objectToRename) throws IOException {
+    private <T extends Updatable & SerializableObject> void createRenamePopup(T objectToRename) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        URL path = getClass().getResource("fxmls/renamePopup.fxml");
-        loader.setLocation(path);
-
-        Parent popupParent = loader.load();
-        Scene popupScene = new Scene(popupParent);
+        Scene popupScene = App.getSceneFromPath("fxmls/renamePopup.fxml", loader);
 
         RenamePopupController<T> popupController = loader.getController();
         popupController.initController(this, objectToRename);
-        Stage popupStage = new Stage();
-        popupStage.setScene(popupScene);
-        popupStage.show();
+        App.createNewStage(popupScene);
     }
 
     @FXML private void onSaveButtonPressed(){

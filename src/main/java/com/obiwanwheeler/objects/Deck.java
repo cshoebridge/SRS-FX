@@ -3,7 +3,7 @@ package com.obiwanwheeler.objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.obiwanwheeler.interfaces.Renamable;
+import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.utilities.DeckFileParser;
 import com.obiwanwheeler.utilities.OptionGroupFileParser;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Deck implements SerializableObject, Renamable {
+public class Deck implements SerializableObject, Updatable {
 
     private String deckName;
 

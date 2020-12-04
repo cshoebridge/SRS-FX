@@ -1,6 +1,6 @@
 package com.obiwanwheeler;
 
-import com.obiwanwheeler.interfaces.Renamable;
+import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.utilities.FileExtensions;
 import com.obiwanwheeler.utilities.Serializer;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-public class RenamePopupController <T extends Renamable & SerializableObject>{
+public class RenamePopupController <T extends Updatable & SerializableObject>{
 
     @FXML private TextField newNameTextField;
     private DeckSettingsController deckSettingsController;
