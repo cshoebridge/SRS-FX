@@ -8,8 +8,6 @@ import com.obiwanwheeler.utilities.Serializer;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
-
 public class OptionGroupCreator {
 
     public static void createNewOptionGroup(String name){

@@ -50,6 +50,9 @@ public class Reviewer {
         if (sourceDeck.getLastDateReviewed().isBefore(LocalDate.now())){
             updatedDeck.setNewCardsLeft(sourceDeck.getOptionGroup().getNumberOfNewCardsToLearn());
         }
+        else {
+            updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
+        }
     }
 
     private static void insertUnchangedCards(Deck sourceDeck){
