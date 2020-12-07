@@ -35,20 +35,20 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML private void onAddCardButtonPressed() throws IOException {
-        Parent cardCreateParent = FXMLLoader.load(getClass().getResource("fxmls/createCard.fxml"));
-        Stage cardCreateStage = new Stage();
-        cardCreateStage.setScene(new Scene(cardCreateParent));
-        cardCreateStage.show();
+        makeNewScene("createCard");
     }
 
     @FXML private void onEditButtonPressed() throws IOException {
-        Parent deckSettingsParent = FXMLLoader.load(getClass().getResource("fxmls/deckSettings.fxml"));
+        makeNewScene("deckSettings");
+    }
+
+    private void makeNewScene(String sceneFXML) throws IOException {
+        Parent deckSettingsParent = FXMLLoader.load(getClass().getResource("fxmls/" + sceneFXML + ".fxml"));
         Stage deckSettingsStage = new Stage();
         deckSettingsStage.setScene(new Scene(deckSettingsParent));
         deckSettingsStage.show();
     }
 
-    //TODO make this look nicer, it's slightly poopy/ie.
     public void refreshDeckList(){
         deckNamesVbox.getChildren().clear();
         for(String name : DeckFileParser.getAlLDeckNames()){

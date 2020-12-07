@@ -31,8 +31,7 @@ public class DeckSettingsController implements Initializable {
     private OptionGroup selectedOptionGroup;
 
     @FXML private void onDeckSelected(){
-        //TODO PLEASE MAN get rid of the repetition me and the homies only write DRY code
-        selectedDeck = DeckFileParser.deserializeDeck(DeckFileParser.DECK_FOLDER_PATH + deckDropdown.getValue() + FileExtensions.JSON);
+        selectedDeck = DeckFileParser.deserializeDeck(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()));
         if (selectedDeck == null){
             return;
         }
@@ -47,7 +46,7 @@ public class DeckSettingsController implements Initializable {
     }
 
     @FXML private void onOptionGroupSelected(){
-        selectedOptionGroup = OptionGroupFileParser.deserializeOptionGroup(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + optionGroupDropdown.getValue() + FileExtensions.JSON);
+        selectedOptionGroup = OptionGroupFileParser.deserializeOptionGroup(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
         if (selectedOptionGroup == null){
             return;
         }
@@ -101,8 +100,12 @@ public class DeckSettingsController implements Initializable {
         }
         //TODO abstract getting file path to a function
         OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText() ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
-        selectedDeck.setOptionGroupFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + optionGroupDropdown.getValue() + FileExtensions.JSON);
-        Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + deckDropdown.getValue() + FileExtensions.JSON, selectedDeck);
+        selectedDeck.setOptionGroupFilePath(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
+        Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
+    }
+
+    private String getFilePath(String folderPath, String name) {
+        return folderPath + name + FileExtensions.JSON;
     }
 
     public void refreshDropdowns(){

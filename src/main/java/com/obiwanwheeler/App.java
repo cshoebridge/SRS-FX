@@ -32,7 +32,7 @@ public class App extends Application {
     }
 
     public static Scene getSceneFromPath(String fxmlPath, FXMLLoader loader) throws IOException {
-        URL path = App.class.getResource("fxmls/newOptionGroupPopup.fxml");
+        URL path = App.class.getResource(fxmlPath);
         loader.setLocation(path);
 
         Parent popupParent = loader.load();

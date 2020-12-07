@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 public class OptionGroupCreator {
 
     public static void createNewOptionGroup(String name){
-        //TODO in FX give option to choose option group
         OptionGroup newOptionGroup = OptionGroupFileParser.DEFAULT_OPTION_GROUP;
         Objects.requireNonNull(newOptionGroup).setOptionGroupName(name);
         Serializer.SERIALIZER_SINGLETON.serializeToNew(newOptionGroup);
