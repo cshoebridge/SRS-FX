@@ -43,6 +43,10 @@ public class Reviewer {
     }
 
     private static void initialiseUpdatedDeck(Deck sourceDeck){
+        if (sourceDeck.getCards().isEmpty()){
+            updatedDeck = new Deck(Collections.emptyList());
+            return;
+        }
         updatedDeck = new Deck(new LinkedList<>());
         updatedDeck.setDeckName(sourceDeck.getDeckName());
         updatedDeck.setOptionGroupFilePath(sourceDeck.getOptionGroupFilePath());

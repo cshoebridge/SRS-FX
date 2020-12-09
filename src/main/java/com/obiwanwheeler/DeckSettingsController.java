@@ -98,7 +98,6 @@ public class DeckSettingsController implements Initializable {
         if (selectedOptionGroup == null){
             return;
         }
-        //TODO abstract getting file path to a function
         OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText() ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
         selectedDeck.setOptionGroupFilePath(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
         Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);

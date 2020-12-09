@@ -1,0 +1,19 @@
+{
+  "deckName" : null,
+  "cards" : [ {
+    "targetLanguageSentence" : "blue eyes white dragon\t\t",
+    "state" : "NEW",
+    "initialViewDate" : "2020-12-09",
+    "daysFromFirstSeenToNextReview" : null,
+    "nativeLanguageTranslation" : "has blue eyes. Is a white dragon."
+  }, {
+    "targetLanguageSentence" : "dark magician",
+    "state" : "NEW",
+    "initialViewDate" : "2020-12-09",
+    "daysFromFirstSeenToNextReview" : null,
+    "nativeLanguageTranslation" : "a magician who possesses dark colours"
+  } ],
+  "optionGroupFilePath" : null,
+  "newCardsLeft" : 0,
+  "lastDateReviewed" : null
+}

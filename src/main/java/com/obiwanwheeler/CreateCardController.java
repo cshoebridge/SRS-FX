@@ -19,11 +19,18 @@ public class CreateCardController implements Initializable {
     @FXML private TextArea frontSideTextArea;
     @FXML private TextArea backSideTextArea;
 
-    @FXML private void onAddButtonPressed(ActionEvent actionEvent){
-        if (deckDropDown.getValue() != null){
+    @FXML private void onAddButtonPressed(){
+        if (canCreate()){
             CardCreator.createNewCard(deckDropDown.getValue(), frontSideTextArea.getText(), backSideTextArea.getText());
-            ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
+            frontSideTextArea.setText("");
+            backSideTextArea.setText("");
         }
+    }
+
+    private boolean canCreate(){
+        return deckDropDown.getValue() != null
+                && !frontSideTextArea.getText().isEmpty()
+                && !backSideTextArea.getText().isEmpty();
     }
 
     @Override
