@@ -7,6 +7,7 @@ import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.utilities.DeckFileParser;
 import com.obiwanwheeler.utilities.OptionGroupFileParser;
+import com.obiwanwheeler.utilities.Serializer;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -51,6 +52,10 @@ public class Deck implements SerializableObject, Updatable {
         this.optionGroup = OptionGroupFileParser.deserializeOptionGroup(optionGroupFilePath);
         this.newCardsLeft = cardsLeftToReviewToday;
         this.lastDateReviewed = lastDateReviewed;
+    }
+
+    public void writeDeckToFile(){
+        Serializer.SERIALIZER_SINGLETON.serializeToNew(this);
     }
 
     public String getDeckName() {

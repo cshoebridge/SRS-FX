@@ -1,6 +1,6 @@
 package com.obiwanwheeler;
 
-import com.obiwanwheeler.creators.DeckCreator;
+import com.obiwanwheeler.objects.Deck;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,7 +15,8 @@ public class CreateDeckController {
 
     @FXML private void onCreateButtonPressed(ActionEvent actionEvent){
         //create deck
-        DeckCreator.createNewDeck(deckNameTextField.getText());
+        Deck newDeck = new Deck(deckNameTextField.getText(), null);
+        newDeck.writeDeckToFile();
         ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
         mainMenuController.refreshDeckList();
     }
