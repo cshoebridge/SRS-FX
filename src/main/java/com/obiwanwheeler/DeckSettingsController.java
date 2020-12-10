@@ -40,10 +40,11 @@ public class DeckSettingsController implements Initializable {
         for (int step : selectedDeck.getOptionGroup().getIntervalSteps()){
             stepsFieldText.append(step).append(" ");
         }
+        OptionGroup deckOptionGroup = selectedDeck.getOptionGroup();
         stepsField.setText(stepsFieldText.toString());
-        newCardsField.setText(String.valueOf(selectedDeck.getOptionGroup().getNumberOfNewCardsToLearn()));
-        graduatingIntervalField.setText(String.valueOf(selectedDeck.getOptionGroup().getGraduatingIntervalInDays()));
-        optionGroupDropdown.setValue(selectedDeck.getOptionGroup().getOptionGroupName());
+        newCardsField.setText(String.valueOf(deckOptionGroup.getNumberOfNewCardsToLearn()));
+        graduatingIntervalField.setText(String.valueOf(deckOptionGroup.getGraduatingIntervalInDays()));
+        optionGroupDropdown.setValue(deckOptionGroup.getOptionGroupName());
     }
 
     @FXML private void onOptionGroupSelected(){
@@ -59,7 +60,8 @@ public class DeckSettingsController implements Initializable {
         newCardsField.setText(String.valueOf(selectedOptionGroup.getNumberOfNewCardsToLearn()));
         graduatingIntervalField.setText(String.valueOf(selectedOptionGroup.getGraduatingIntervalInDays()));
         optionGroupDropdown.setValue(selectedOptionGroup.getOptionGroupName());
-        selectedDeck.setOptionGroupFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + selectedOptionGroup.getName() + FileExtensions.JSON);
+        if (selectedDeck != null)
+            selectedDeck.setOptionGroupFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + selectedOptionGroup.getName() + FileExtensions.JSON);
     }
 
     @FXML private void onMakeNewGroupButtonPressed() throws IOException {
@@ -106,9 +108,15 @@ public class DeckSettingsController implements Initializable {
         Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
     }
 
-    @FXML private void onDeleteButtonPressed() throws IOException {
+    @FXML private void onDeleteDeckButtonPressed() throws IOException {
         if (selectedDeck != null){
             createDeletePopup(selectedDeck);
+        }
+    }
+
+    @FXML private void onDeleteOptionGroupButtonPressed() throws IOException {
+        if (selectedOptionGroup != null && !optionGroupDropdown.getValue().equals("default")){
+            createDeletePopup(selectedOptionGroup);
         }
     }
 

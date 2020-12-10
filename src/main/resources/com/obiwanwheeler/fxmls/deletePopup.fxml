@@ -18,7 +18,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete your deck? (this cannot be undone)" wrappingWidth="463.287109375" GridPane.halignment="LEFT">
+        <Text fx:id="deleteText" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete your deck? (this cannot be undone)" wrappingWidth="463.287109375" GridPane.halignment="LEFT">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>

@@ -3,16 +3,17 @@ package com.obiwanwheeler;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.utilities.FileExtensions;
-import com.obiwanwheeler.utilities.Serializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
 
 public class DeleteWarningController<T extends Updatable & SerializableObject>{
 
+    @FXML private Text deleteText;
     private DeckSettingsController deckSettingsController;
     private MainMenuController mainMenuController;
     private T objectToDelete;
@@ -35,6 +36,8 @@ public class DeleteWarningController<T extends Updatable & SerializableObject>{
     }
 
     public void initController(DeckSettingsController deckSettingsController, MainMenuController mainMenuController, T objectToDelete){
+        deleteText.setText("Do you really want to delete " + objectToDelete.getName() + "?\n This action cannot be undone.");
+
         this.deckSettingsController = deckSettingsController;
         this.mainMenuController = mainMenuController;
         this.objectToDelete = objectToDelete;
