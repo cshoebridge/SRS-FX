@@ -103,6 +103,12 @@ public class DeckSettingsController implements Initializable {
         Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
     }
 
+    @FXML private void onDeleteButtonPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Scene deletionWarningScene = App.getSceneFromPath("fxmls/deleteWarning.fxml", loader);
+
+    }
+
     private String getFilePath(String folderPath, String name) {
         return folderPath + name + FileExtensions.JSON;
     }

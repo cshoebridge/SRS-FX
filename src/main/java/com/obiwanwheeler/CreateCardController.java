@@ -1,6 +1,6 @@
 package com.obiwanwheeler;
 
-import com.obiwanwheeler.creators.CardCreator;
+import com.obiwanwheeler.objects.Card;
 import com.obiwanwheeler.utilities.DeckFileParser;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +18,10 @@ public class CreateCardController implements Initializable {
 
     @FXML private void onAddButtonPressed(){
         if (canCreate()){
-            CardCreator.createNewCard(deckDropDown.getValue(), frontSideTextArea.getText(), backSideTextArea.getText());
+            Card.Builder builder = new Card.Builder();
+            Card newCard = builder.frontSide(frontSideTextArea.getText()).backSide(backSideTextArea.getText())
+                    .build();
+            newCard.writeNewCardToFile(deckDropDown.getValue());
             frontSideTextArea.setText("");
             backSideTextArea.setText("");
         }

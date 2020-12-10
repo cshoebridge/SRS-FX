@@ -3,6 +3,9 @@ package com.obiwanwheeler.objects;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.obiwanwheeler.utilities.DeckFileParser;
+import com.obiwanwheeler.utilities.FileExtensions;
+import com.obiwanwheeler.utilities.Serializer;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -42,6 +45,16 @@ public class Card {
             shouldBeReviewed = true;
             minutesUntilNextReviewInThisSession = Duration.ZERO;
         }
+    }
+
+    public void writeNewCardToFile(String deckToAddToName){
+        String deckToAddToPath = DeckFileParser.DECK_FOLDER_PATH + deckToAddToName + FileExtensions.JSON;
+        Deck tempDeck = DeckFileParser.deserializeDeck(deckToAddToPath);
+        if (tempDeck == null){
+            return;
+        }
+        tempDeck.getCards().add(this);
+        Serializer.SERIALIZER_SINGLETON.serializeToExisting(deckToAddToPath, tempDeck);
     }
 
     //region getters and setters
