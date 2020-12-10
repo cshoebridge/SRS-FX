@@ -31,8 +31,8 @@ public class Reviewer {
         if (deckToReview == null){
             return false;
         }
-        initialiseUpdatedDeck(deckToReview);
-        insertUnchangedCards(deckToReview);
+        updatedDeck = initialiseUpdatedDeck(deckToReview);
+        insertUnchangedCardsInto(deckToReview);
 
         intervalHandler = new IntervalHandler(deckToReview.getOptionGroup());
 
@@ -42,10 +42,10 @@ public class Reviewer {
         return true;
     }
 
-    private static void initialiseUpdatedDeck(Deck sourceDeck){
+    private static Deck initialiseUpdatedDeck(Deck sourceDeck){
         if (sourceDeck.getCards().isEmpty()){
             updatedDeck = new Deck(Collections.emptyList());
-            return;
+            return updatedDeck;
         }
         updatedDeck = new Deck(new LinkedList<>());
         updatedDeck.setDeckName(sourceDeck.getDeckName());
@@ -57,9 +57,10 @@ public class Reviewer {
         else {
             updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
         }
+        return updatedDeck;
     }
 
-    private static void insertUnchangedCards(Deck sourceDeck){
+    private static void insertUnchangedCardsInto(Deck sourceDeck){
         List<Card> unchangedCards = DeckManipulator.DECK_MANIPULATOR_SINGLETON.getCardsNotBeingReviewedToday(sourceDeck);
         updatedDeck.getCards().addAll(unchangedCards);
     }
