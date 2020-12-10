@@ -35,18 +35,18 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML private void onAddCardButtonPressed() throws IOException {
-        makeNewScene("createCard");
-    }
-
-    @FXML private void onEditButtonPressed() throws IOException {
-        makeNewScene("deckSettings");
-    }
-
-    private void makeNewScene(String sceneFXML) throws IOException {
-        Parent deckSettingsParent = FXMLLoader.load(getClass().getResource("fxmls/" + sceneFXML + ".fxml"));
+        Parent deckSettingsParent = FXMLLoader.load(getClass().getResource("fxmls/createCard.fxml"));
         Stage deckSettingsStage = new Stage();
         deckSettingsStage.setScene(new Scene(deckSettingsParent));
         deckSettingsStage.show();
+    }
+
+    @FXML private void onEditButtonPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Scene editScene = App.getSceneFromPath("fxmls/deckSettings.fxml", loader);
+        DeckSettingsController deckSettingsController = loader.getController();
+        deckSettingsController.initData(this);
+        App.createNewStage(editScene);
     }
 
     public void refreshDeckList(){

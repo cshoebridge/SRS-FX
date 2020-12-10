@@ -7,7 +7,6 @@ import com.obiwanwheeler.utilities.Serializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -15,23 +14,29 @@ import java.io.File;
 public class DeleteWarningController<T extends Updatable & SerializableObject>{
 
     private DeckSettingsController deckSettingsController;
-    private T objectToRename;
+    private MainMenuController mainMenuController;
+    private T objectToDelete;
+
+    @FXML private void onCancelButtonPressed(ActionEvent actionEvent){
+        ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
+    }
 
     @FXML private void onDeleteButtonPressed(ActionEvent actionEvent){
         //create deck
-        String originalName = objectToRename.getName();
-        File oldDeckFile = new File(objectToRename.getFolderPath() + originalName + FileExtensions.JSON);
-        if (!oldDeckFile.delete()){
+        String deckName = objectToDelete.getName();
+        File deckFile = new File(objectToDelete.getFolderPath() + deckName + FileExtensions.JSON);
+        if (!deckFile.delete()){
             System.out.println("failed to delete old file");
             return;
         }
-        Serializer.SERIALIZER_SINGLETON.serializeToNew(objectToRename);
         ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
         deckSettingsController.refreshDropdowns();
+        mainMenuController.refreshDeckList();
     }
 
-    public void initController(DeckSettingsController deckSettingsController, T objectToDelete){
+    public void initController(DeckSettingsController deckSettingsController, MainMenuController mainMenuController, T objectToDelete){
         this.deckSettingsController = deckSettingsController;
-        this.objectToRename = objectToDelete;
+        this.mainMenuController = mainMenuController;
+        this.objectToDelete = objectToDelete;
     }
 }

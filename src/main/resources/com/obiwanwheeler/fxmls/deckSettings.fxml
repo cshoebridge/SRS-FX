@@ -49,6 +49,7 @@
                       <MenuItem mnemonicParsing="false" onAction="#onMakeNewGroupButtonPressed" text="New Option Group" />
                         <MenuItem mnemonicParsing="false" onAction="#onRenameGroupButtonPressed" text="Rename Option Group" />
                       <MenuItem mnemonicParsing="false" onAction="#onRenameDeckButtonPressed" text="Rename Deck" />
+                        <MenuItem mnemonicParsing="false" onAction="#onDeleteButtonPressed" text="Delete Deck" />
                     </items>
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

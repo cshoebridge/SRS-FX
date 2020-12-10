@@ -29,6 +29,7 @@ public class DeckSettingsController implements Initializable {
     @FXML private ComboBox<String> deckDropdown;
     private Deck selectedDeck;
     private OptionGroup selectedOptionGroup;
+    private MainMenuController mainMenuController;
 
     @FXML private void onDeckSelected(){
         selectedDeck = DeckFileParser.deserializeDeck(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()));
@@ -87,26 +88,37 @@ public class DeckSettingsController implements Initializable {
         Scene popupScene = App.getSceneFromPath("fxmls/renamePopup.fxml", loader);
 
         RenamePopupController<T> popupController = loader.getController();
-        popupController.initController(this, objectToRename);
+        popupController.initController(this, mainMenuController, objectToRename);
         App.createNewStage(popupScene);
     }
 
     @FXML private void onSaveButtonPressed(){
+        mainMenuController.refreshDeckList();
         if (selectedDeck == null){
             return;
         }
         if (selectedOptionGroup == null){
             return;
         }
-        OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText() ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
+        OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText()
+                ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
         selectedDeck.setOptionGroupFilePath(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
         Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
     }
 
     @FXML private void onDeleteButtonPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        Scene deletionWarningScene = App.getSceneFromPath("fxmls/deleteWarning.fxml", loader);
+        if (selectedDeck != null){
+            createDeletePopup(selectedDeck);
+        }
+    }
 
+    private <T extends Updatable & SerializableObject> void createDeletePopup(T objectToDelete) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Scene deletionWarningScene = App.getSceneFromPath("fxmls/deletePopup.fxml", loader);
+
+        DeleteWarningController<T> deleteWarningController = loader.getController();
+        deleteWarningController.initController(this, mainMenuController, objectToDelete);
+        App.createNewStage(deletionWarningScene);
     }
 
     private String getFilePath(String folderPath, String name) {
@@ -123,6 +135,10 @@ public class DeckSettingsController implements Initializable {
         for(String name : OptionGroupFileParser.getAllOptionGroupNames()){
             optionGroupDropdown.getItems().add(name.replace(".json", ""));
         }
+    }
+
+    public void initData(MainMenuController mainMenuController){
+        this.mainMenuController = mainMenuController;
     }
 
     @Override

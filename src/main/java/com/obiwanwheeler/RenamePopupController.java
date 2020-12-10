@@ -16,6 +16,7 @@ public class RenamePopupController <T extends Updatable & SerializableObject>{
 
     @FXML private TextField newNameTextField;
     private DeckSettingsController deckSettingsController;
+    private MainMenuController mainMenuController;
     private T objectToRename;
 
     @FXML private void onRenameButtonPressed(ActionEvent actionEvent){
@@ -30,10 +31,12 @@ public class RenamePopupController <T extends Updatable & SerializableObject>{
         Serializer.SERIALIZER_SINGLETON.serializeToNew(objectToRename);
         ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
         deckSettingsController.refreshDropdowns();
+        mainMenuController.refreshDeckList();
     }
 
-    public void initController(DeckSettingsController deckSettingsController, T objectToRename){
+    public void initController(DeckSettingsController deckSettingsController, MainMenuController mainMenuController, T objectToRename){
         this.deckSettingsController = deckSettingsController;
+        this.mainMenuController = mainMenuController;
         this.objectToRename = objectToRename;
     }
 }
