@@ -8,6 +8,7 @@ import com.obiwanwheeler.utilities.Serializer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//TODO merge with OptionGroup class
 public class OptionGroupCreator {
 
     public static void createNewOptionGroup(String name){

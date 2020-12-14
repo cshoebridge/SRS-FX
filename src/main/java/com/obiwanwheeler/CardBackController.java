@@ -40,9 +40,9 @@ public class CardBackController {
         App.setRoot(currentStage.getScene(), "cardFront");
     }
 
-    private void finishReview(){
+    private void finishReview() throws IOException {
         Stage currentStage = (Stage)targetLanguageSentence.getScene().getWindow();
-        App.changeSceneOnWindow(currentStage, "sessionFinished");
+        App.setRoot(currentStage.getScene(), "sessionFinished");
     }
 
     public void initialiseCardGUI(Card card){
