@@ -7,14 +7,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SessionFinishedController implements Initializable {
 
-    @FXML private void onBackButtonPressed(ActionEvent actionEvent){
+    @FXML private void onBackButtonPressed(ActionEvent actionEvent) throws IOException {
         Stage currentStage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-        App.changeSceneOnWindow(currentStage, "mainMenu");
+        App.setRoot(currentStage.getScene(), "mainMenu");
     }
 
     @Override

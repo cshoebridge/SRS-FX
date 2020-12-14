@@ -1,19 +1,19 @@
 {
   "deckName" : "sentence_mining",
   "cards" : [ {
-    "targetLanguageSentence" : "彼女お借りします",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-04",
-    "daysFromFirstSeenToNextReview" : "P7D",
-    "nativeLanguageTranslation" : "High quality anime"
-  }, {
     "targetLanguageSentence" : "君のせいだよ！和也のせい！責任を取ればいいよね！",
-    "state" : "LEARNT",
+    "state" : "NEW",
     "initialViewDate" : "2020-12-02",
-    "daysFromFirstSeenToNextReview" : "P10D",
+    "daysFromFirstSeenToNextReview" : "P13D",
     "nativeLanguageTranslation" : "It's your fault, Kazuya ! you should take responsibility!"
+  }, {
+    "targetLanguageSentence" : "彼女お借りします",
+    "state" : "NEW",
+    "initialViewDate" : "2020-12-04",
+    "daysFromFirstSeenToNextReview" : "P13D",
+    "nativeLanguageTranslation" : "High quality anime"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/group2.json",
   "newCardsLeft" : 10,
-  "lastDateReviewed" : "2020-12-10"
+  "lastDateReviewed" : "2020-12-14"
 }

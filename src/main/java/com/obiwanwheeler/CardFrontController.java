@@ -29,13 +29,12 @@ public class CardFrontController implements Initializable {
         loader.setLocation(path);
 
         Parent cardBackParent = loader.load();
-        Scene cardBack = new Scene(cardBackParent);
 
         CardBackController cardBackController = loader.getController();
         cardBackController.initialiseCardGUI(cardToReview);
 
         Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        currentStage.setScene(cardBack);
+        currentStage.getScene().setRoot(cardBackParent);
     }
 
     @Override

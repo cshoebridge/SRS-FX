@@ -5,15 +5,17 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class ReviewStartController{
 
-    @FXML private void onStartButtonPressed(ActionEvent actionEvent){
+    @FXML private void onStartButtonPressed(ActionEvent actionEvent) throws IOException {
         Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         if (Reviewer.getCardsToReviewToday().isEmpty()){
-            App.changeSceneOnWindow(currentStage, "sessionFinished");
+            App.setRoot(currentStage.getScene(), "sessionFinished");
         }
         else{
-            App.changeSceneOnWindow(currentStage, "cardFront");
+            App.setRoot(currentStage.getScene(), "cardFront");
         }
     }
 }

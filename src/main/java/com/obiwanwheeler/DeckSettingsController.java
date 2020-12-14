@@ -66,7 +66,7 @@ public class DeckSettingsController implements Initializable {
 
     @FXML private void onMakeNewGroupButtonPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Scene popupScene = App.getSceneFromPath("fxmls/newOptionGroupPopup.fxml", loader);
+        Scene popupScene = App.getSceneFromFXML("newOptionGroupPopup", loader);
 
         NewOptionGroupPopupController popupController = loader.getController();
         popupController.initController(this);
@@ -87,7 +87,7 @@ public class DeckSettingsController implements Initializable {
 
     private <T extends Updatable & SerializableObject> void createRenamePopup(T objectToRename) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Scene popupScene = App.getSceneFromPath("fxmls/renamePopup.fxml", loader);
+        Scene popupScene = App.getSceneFromFXML("renamePopup", loader);
 
         RenamePopupController<T> popupController = loader.getController();
         popupController.initController(this, mainMenuController, objectToRename);
@@ -122,7 +122,7 @@ public class DeckSettingsController implements Initializable {
 
     private <T extends Updatable & SerializableObject> void createDeletePopup(T objectToDelete) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Scene deletionWarningScene = App.getSceneFromPath("fxmls/deletePopup.fxml", loader);
+        Scene deletionWarningScene = App.getSceneFromFXML("deletePopup", loader);
 
         DeleteWarningController<T> deleteWarningController = loader.getController();
         deleteWarningController.initController(this, mainMenuController, objectToDelete);

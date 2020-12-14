@@ -1,6 +1,7 @@
 package com.obiwanwheeler;
 
 import com.obiwanwheeler.utilities.DeckFileParser;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,23 +44,30 @@ public class MainMenuController implements Initializable {
 
     @FXML private void onEditButtonPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Scene editScene = App.getSceneFromPath("fxmls/deckSettings.fxml", loader);
+        Scene editScene = App.getSceneFromFXML("deckSettings", loader);
         DeckSettingsController deckSettingsController = loader.getController();
         deckSettingsController.initData(this);
         App.createNewStage(editScene);
+    }
+
+    private void onDeckSelected(ActionEvent actionEvent) {
+        String deckName = ((Button) actionEvent.getSource()).getText();
+        if (Reviewer.tryInitialiseReview(deckName)) {
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            try {
+                App.setRoot(currentStage.getScene(), "reviewStart");
+            } catch (IOException e) {
+                //TODO error handling 1
+                e.printStackTrace();
+            }
+        }
     }
 
     public void refreshDeckList(){
         deckNamesVbox.getChildren().clear();
         for(String name : DeckFileParser.getAlLDeckNames()){
             Button deckButton = new Button(name.replace(".json", ""));
-            deckButton.setOnAction(actionEvent -> {
-                String deckName = ((Button) actionEvent.getSource()).getText();
-                if (Reviewer.tryInitialiseReview(deckName)) {
-                    Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    App.changeSceneOnWindow(currentStage, "reviewStart");
-                }
-            });
+            deckButton.setOnAction(this::onDeckSelected);
             deckButton.setId("deckButton");
             deckNamesVbox.getChildren().add(deckButton);
         }

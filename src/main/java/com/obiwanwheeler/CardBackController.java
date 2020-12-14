@@ -7,13 +7,15 @@ import javafx.scene.Node;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class CardBackController {
 
     @FXML private Text targetLanguageSentence;
     @FXML private Text nativeLanguageTranslation;
     private Card cardToReview;
 
-    @FXML private void onPassButtonPressed(ActionEvent actionEvent) {
+    @FXML private void onPassButtonPressed(ActionEvent actionEvent) throws IOException {
         Reviewer.processCardMarkedGood(cardToReview);
         if (Reviewer.sessionIsFinished()){
             //go to review finished screen
@@ -23,7 +25,7 @@ public class CardBackController {
         toNextCard(actionEvent);
     }
 
-    @FXML private void onFailButtonPressed(ActionEvent actionEvent) {
+    @FXML private void onFailButtonPressed(ActionEvent actionEvent) throws IOException {
         Reviewer.processCardMarkedBad(cardToReview);
         if (Reviewer.sessionIsFinished()){
             //go to review finished screen
@@ -33,9 +35,9 @@ public class CardBackController {
         toNextCard(actionEvent);
     }
 
-    private void toNextCard(ActionEvent eventSource){
+    private void toNextCard(ActionEvent eventSource) throws IOException {
         Stage currentStage = (Stage)((Node)eventSource.getSource()).getScene().getWindow();
-        App.changeSceneOnWindow(currentStage, "cardFront");
+        App.setRoot(currentStage.getScene(), "cardFront");
     }
 
     private void finishReview(){

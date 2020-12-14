@@ -31,12 +31,21 @@ public class App extends Application {
         }
     }
 
-    public static Scene getSceneFromPath(String fxmlPath, FXMLLoader loader) throws IOException {
-        URL path = App.class.getResource(fxmlPath);
+    public static Scene getSceneFromFXML(String targetFXML, FXMLLoader loader) throws IOException {
+        URL path = App.class.getResource("fxmls" + targetFXML + FileExtensions.FXML);
         loader.setLocation(path);
 
         Parent popupParent = loader.load();
         return new Scene(popupParent);
+    }
+
+    public static void setRoot(Scene scene, String targetFXML) throws IOException {
+        scene.setRoot(loadFXML("fxmls/" + targetFXML + FileExtensions.FXML));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
+        return fxmlLoader.load();
     }
 
     public static void createNewStage(Scene scene){

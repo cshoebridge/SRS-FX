@@ -4,40 +4,40 @@
     "targetLanguageSentence" : "baka ni shinaide kudasai",
     "state" : "LEARNT",
     "initialViewDate" : "2020-11-20",
-    "daysFromFirstSeenToNextReview" : "P19D",
+    "daysFromFirstSeenToNextReview" : "P25D",
     "nativeLanguageTranslation" : "please don't make fun of me"
   }, {
     "targetLanguageSentence" : "subete no sekinin watashi ga toru!",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-01",
-    "daysFromFirstSeenToNextReview" : "P9D",
+    "daysFromFirstSeenToNextReview" : "P15D",
     "nativeLanguageTranslation" : "I'll take all responsibility"
-  }, {
-    "targetLanguageSentence" : "this is a new card\t\t\t",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-03",
-    "daysFromFirstSeenToNextReview" : "P7D",
-    "nativeLanguageTranslation" : "this is its back"
-  }, {
-    "targetLanguageSentence" : "neeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-01",
-    "daysFromFirstSeenToNextReview" : "P9D",
-    "nativeLanguageTranslation" : "*shion noises*"
   }, {
     "targetLanguageSentence" : "ikeru ka?",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-04",
-    "daysFromFirstSeenToNextReview" : "P4D",
+    "daysFromFirstSeenToNextReview" : "P10D",
     "nativeLanguageTranslation" : "I wonder if it'll work?"
+  }, {
+    "targetLanguageSentence" : "neeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-01",
+    "daysFromFirstSeenToNextReview" : "P15D",
+    "nativeLanguageTranslation" : "*shion noises*"
   }, {
     "targetLanguageSentence" : "kazuma-sannnnnn kyouryoku shite yo kazuma-sannnn!",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-04",
-    "daysFromFirstSeenToNextReview" : "P4D",
+    "daysFromFirstSeenToNextReview" : "P10D",
     "nativeLanguageTranslation" : "kazuma-sannnn please just cooperate!"
+  }, {
+    "targetLanguageSentence" : "this is a new card\t\t\t",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-03",
+    "daysFromFirstSeenToNextReview" : "P13D",
+    "nativeLanguageTranslation" : "this is its back"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/testGroup.json",
   "newCardsLeft" : 15,
-  "lastDateReviewed" : "2020-12-07"
+  "lastDateReviewed" : "2020-12-14"
 }
