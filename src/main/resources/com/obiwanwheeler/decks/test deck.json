@@ -1,30 +1,6 @@
 {
   "deckName" : "test deck",
   "cards" : [ {
-    "targetLanguageSentence" : "baka ni shinaide kudasai",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-11-20",
-    "daysFromFirstSeenToNextReview" : "P25D",
-    "nativeLanguageTranslation" : "please don't make fun of me"
-  }, {
-    "targetLanguageSentence" : "subete no sekinin watashi ga toru!",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-01",
-    "daysFromFirstSeenToNextReview" : "P15D",
-    "nativeLanguageTranslation" : "I'll take all responsibility"
-  }, {
-    "targetLanguageSentence" : "neeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-01",
-    "daysFromFirstSeenToNextReview" : "P15D",
-    "nativeLanguageTranslation" : "*shion noises*"
-  }, {
-    "targetLanguageSentence" : "this is a new card\t\t\t",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-03",
-    "daysFromFirstSeenToNextReview" : "P13D",
-    "nativeLanguageTranslation" : "this is its back"
-  }, {
     "targetLanguageSentence" : "ikeru ka?",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-04",
@@ -36,8 +12,38 @@
     "initialViewDate" : "2020-12-04",
     "daysFromFirstSeenToNextReview" : "P13D",
     "nativeLanguageTranslation" : "kazuma-sannnn please just cooperate!"
+  }, {
+    "targetLanguageSentence" : "subete no sekinin watashi ga toru!",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-01",
+    "daysFromFirstSeenToNextReview" : "P21D",
+    "nativeLanguageTranslation" : "I'll take all responsibility"
+  }, {
+    "targetLanguageSentence" : "baka ni shinaide kudasai",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-11-20",
+    "daysFromFirstSeenToNextReview" : "P31D",
+    "nativeLanguageTranslation" : "please don't make fun of me"
+  }, {
+    "targetLanguageSentence" : "neeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-01",
+    "daysFromFirstSeenToNextReview" : "P21D",
+    "nativeLanguageTranslation" : "*shion noises*"
+  }, {
+    "targetLanguageSentence" : "this is a new card\t\t\t",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-03",
+    "daysFromFirstSeenToNextReview" : "P19D",
+    "nativeLanguageTranslation" : "this is its back"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/testGroup.json",
   "newCardsLeft" : 15,
-  "lastDateReviewed" : "2020-12-14"
+  "lastDateReviewed" : "2020-12-16",
+  "optionGroup" : {
+    "optionGroupName" : "default",
+    "graduatingIntervalInDays" : 1,
+    "intervalSteps" : [ 1, 10 ],
+    "numberOfNewCardsToLearn" : 15
+  }
 }

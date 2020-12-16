@@ -16,7 +16,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -64,30 +63,36 @@ public class DeckSettingsController implements Initializable {
             selectedDeck.setOptionGroupFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH + selectedOptionGroup.getName() + FileExtensions.JSON);
     }
 
-    @FXML private void onMakeNewGroupButtonPressed() throws IOException {
+    @FXML private void onMakeNewGroupButtonPressed() {
         FXMLLoader loader = new FXMLLoader();
         Scene popupScene = App.getSceneFromFXML("newOptionGroupPopup", loader);
+
+        if (popupScene == null)
+            return;
 
         NewOptionGroupPopupController popupController = loader.getController();
         popupController.initController(this);
         App.createNewStage(popupScene);
     }
 
-    @FXML private void onRenameGroupButtonPressed() throws IOException {
+    @FXML private void onRenameGroupButtonPressed() {
         if (selectedOptionGroup != null && !optionGroupDropdown.getValue().equals("default")){
             createRenamePopup(selectedOptionGroup);
         }
     }
 
-    @FXML private void onRenameDeckButtonPressed() throws IOException{
+    @FXML private void onRenameDeckButtonPressed() {
         if (selectedDeck != null){
             createRenamePopup(selectedDeck);
         }
     }
 
-    private <T extends Updatable & SerializableObject> void createRenamePopup(T objectToRename) throws IOException {
+    private <T extends Updatable & SerializableObject> void createRenamePopup(T objectToRename) {
         FXMLLoader loader = new FXMLLoader();
         Scene popupScene = App.getSceneFromFXML("renamePopup", loader);
+
+        if (popupScene == null)
+            return;
 
         RenamePopupController<T> popupController = loader.getController();
         popupController.initController(this, mainMenuController, objectToRename);
@@ -108,21 +113,24 @@ public class DeckSettingsController implements Initializable {
         Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
     }
 
-    @FXML private void onDeleteDeckButtonPressed() throws IOException {
+    @FXML private void onDeleteDeckButtonPressed() {
         if (selectedDeck != null){
             createDeletePopup(selectedDeck);
         }
     }
 
-    @FXML private void onDeleteOptionGroupButtonPressed() throws IOException {
+    @FXML private void onDeleteOptionGroupButtonPressed() {
         if (selectedOptionGroup != null && !optionGroupDropdown.getValue().equals("default")){
             createDeletePopup(selectedOptionGroup);
         }
     }
 
-    private <T extends Updatable & SerializableObject> void createDeletePopup(T objectToDelete) throws IOException {
+    private <T extends Updatable & SerializableObject> void createDeletePopup(T objectToDelete) {
         FXMLLoader loader = new FXMLLoader();
         Scene deletionWarningScene = App.getSceneFromFXML("deletePopup", loader);
+
+        if (deletionWarningScene == null)
+            return;
 
         DeleteWarningController<T> deleteWarningController = loader.getController();
         deleteWarningController.initController(this, mainMenuController, objectToDelete);

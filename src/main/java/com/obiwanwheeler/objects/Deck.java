@@ -114,12 +114,14 @@ public class Deck implements SerializableObject, Updatable {
     }
 
     @Override
-    @JsonIgnore public void setName(String deckName) {
+    @JsonIgnore
+    public void setName(String deckName) {
         this.deckName = deckName;
     }
 
     @Override
-    @JsonIgnore public String getName() {
+    @JsonIgnore
+    public String getName() {
         return deckName;
     }
 }

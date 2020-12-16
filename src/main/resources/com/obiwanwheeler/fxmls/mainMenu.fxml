@@ -51,6 +51,7 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="BOTTOM_LEFT">
         <buttons>
+            <Button mnemonicParsing="false" onAction="#onBrowseButtonPressed" text="Browse" />
           <Button mnemonicParsing="false" onAction="#onCreateDeckButtonPressed" text="Create Deck" />
             <Button mnemonicParsing="false" onAction="#onEditButtonPressed" text="Edit Deck" />
             <Button mnemonicParsing="false" onAction="#onAddCardButtonPressed" text="Add Card" />

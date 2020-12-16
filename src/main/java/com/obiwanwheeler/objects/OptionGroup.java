@@ -81,6 +81,7 @@ public class OptionGroup implements SerializableObject , Updatable {
         return optionGroupName;
     }
 
+    @Deprecated
     //region builder class
     public static class Builder{
         private String optionGroupName;

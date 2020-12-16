@@ -1,5 +1,6 @@
 package com.obiwanwheeler;
 
+import com.Alerts;
 import com.obiwanwheeler.utilities.FileExtensions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ public class App extends Application {
         stage.show();
     }
 
+    @Deprecated
     public static void changeSceneOnWindow(Stage targetStage, String targetFXML){
         try {
             Parent cardFrontParent = FXMLLoader.load(App.class.getResource("fxmls/" + targetFXML + FileExtensions.FXML));
@@ -31,21 +33,34 @@ public class App extends Application {
         }
     }
 
-    public static Scene getSceneFromFXML(String targetFXML, FXMLLoader loader) throws IOException {
-        URL path = App.class.getResource("fxmls" + targetFXML + FileExtensions.FXML);
-        loader.setLocation(path);
+    public static Scene getSceneFromFXML(String targetFXML, FXMLLoader loader){
+        URL path = App.class.getResource("fxmls/" + targetFXML + FileExtensions.FXML);
 
-        Parent popupParent = loader.load();
-        return new Scene(popupParent);
+        Parent popupParent;
+        try {
+            loader.setLocation(path);
+            popupParent = loader.load();
+            return new Scene(popupParent);
+        } catch (IOException | IllegalStateException e) {
+            Alerts.giveLoadFailureAlert();
+            return null;
+        }
+
     }
 
-    public static void setRoot(Scene scene, String targetFXML) throws IOException {
+    public static void setRoot(Scene scene, String targetFXML) {
         scene.setRoot(loadFXML("fxmls/" + targetFXML + FileExtensions.FXML));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    private static Parent loadFXML(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
-        return fxmlLoader.load();
+        try{
+            return fxmlLoader.load();
+        }
+        catch (IOException e){
+            Alerts.giveLoadFailureAlert();
+            return null;
+        }
     }
 
     public static void createNewStage(Scene scene){
