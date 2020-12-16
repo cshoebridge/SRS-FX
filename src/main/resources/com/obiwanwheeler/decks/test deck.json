@@ -33,17 +33,11 @@
   }, {
     "targetLanguageSentence" : "this is a new card\t\t\t",
     "state" : "LEARNT",
-    "initialViewDate" : "2020-12-03",
-    "daysFromFirstSeenToNextReview" : "P19D",
+    "initialViewDate" : "2020-12-16",
+    "daysFromFirstSeenToNextReview" : "P1D",
     "nativeLanguageTranslation" : "this is its back"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/testGroup.json",
-  "newCardsLeft" : 15,
-  "lastDateReviewed" : "2020-12-16",
-  "optionGroup" : {
-    "optionGroupName" : "default",
-    "graduatingIntervalInDays" : 1,
-    "intervalSteps" : [ 1, 10 ],
-    "numberOfNewCardsToLearn" : 15
-  }
+  "newCardsLeft" : 14,
+  "lastDateReviewed" : "2020-12-16"
 }

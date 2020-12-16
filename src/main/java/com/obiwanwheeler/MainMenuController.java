@@ -1,6 +1,6 @@
 package com.obiwanwheeler;
 
-import com.Alerts;
+import com.obiwanwheeler.utilities.Alerts;
 import com.obiwanwheeler.utilities.DeckFileParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

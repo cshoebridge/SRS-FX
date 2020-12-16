@@ -27,11 +27,10 @@ public final class DeckFileParser {
             deserializedDeck = OBJECT_MAPPER.readValue(deckFile, new TypeReference<>(){});
             return deserializedDeck;
         } catch (FileNotFoundException e){
-            System.out.println("requested deck could not be found");
+            Alerts.giveDeckUnfoundAlert();
             return null;
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("unable to deserialize deck file");
             return null;
         }
     }

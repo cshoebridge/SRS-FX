@@ -1,6 +1,6 @@
 package com.obiwanwheeler;
 
-import com.Alerts;
+import com.obiwanwheeler.utilities.Alerts;
 import com.obiwanwheeler.utilities.FileExtensions;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

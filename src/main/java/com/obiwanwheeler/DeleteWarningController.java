@@ -2,6 +2,7 @@ package com.obiwanwheeler;
 
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.interfaces.Updatable;
+import com.obiwanwheeler.utilities.Alerts;
 import com.obiwanwheeler.utilities.FileExtensions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +28,7 @@ public class DeleteWarningController<T extends Updatable & SerializableObject>{
         String deckName = objectToDelete.getName();
         File deckFile = new File(objectToDelete.getFolderPath() + deckName + FileExtensions.JSON);
         if (!deckFile.delete()){
-            System.out.println("failed to delete old file");
+            Alerts.giveDeleteFailureAlert();
             return;
         }
         ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();

@@ -21,11 +21,5 @@
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/group2.json",
   "newCardsLeft" : 8,
-  "lastDateReviewed" : "2020-12-16",
-  "optionGroup" : {
-    "optionGroupName" : "default",
-    "graduatingIntervalInDays" : 1,
-    "intervalSteps" : [ 1, 10 ],
-    "numberOfNewCardsToLearn" : 15
-  }
+  "lastDateReviewed" : "2020-12-16"
 }
