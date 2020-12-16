@@ -22,6 +22,7 @@ public class Card {
     private Period daysFromFirstSeenToNextReview;
 
     private LocalDate initialViewDate;
+    @JsonIgnore private LocalDate nextReviewDate;
     @JsonIgnore private Duration minutesUntilNextReviewInThisSession;
     @JsonIgnore private boolean shouldBeReviewed;
 
@@ -38,7 +39,7 @@ public class Card {
         if (state != CardState.NEW){
             this.daysFromFirstSeenToNextReview = Objects.requireNonNullElse(daysFromFirstSeenToNextReview, Period.ZERO);
             minutesUntilNextReviewInThisSession = daysFromFirstSeenToNextReview.getDays() >= 1 ? Duration.ofMinutes(-1) : Duration.ZERO;
-            LocalDate nextReviewDate = initialViewDate.plus(daysFromFirstSeenToNextReview);
+            nextReviewDate = initialViewDate.plus(daysFromFirstSeenToNextReview);
             shouldBeReviewed = LocalDate.now().isAfter(nextReviewDate) || LocalDate.now().equals(nextReviewDate);
         }
         else{
@@ -88,6 +89,10 @@ public class Card {
 
     public void setInitialViewDate(LocalDate initialViewDate){
         this.initialViewDate = initialViewDate;
+    }
+
+    public LocalDate getNextReviewDate() {
+        return nextReviewDate;
     }
 
     public Duration getMinutesUntilNextReviewInThisSession() {

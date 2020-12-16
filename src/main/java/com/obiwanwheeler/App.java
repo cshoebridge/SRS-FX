@@ -30,6 +30,7 @@ public class App extends Application {
             targetStage.setScene(cardFront);
         } catch (IOException e) {
             e.printStackTrace();
+            Alerts.giveLoadFailureAlert();
         }
     }
 
@@ -42,6 +43,7 @@ public class App extends Application {
             popupParent = loader.load();
             return new Scene(popupParent);
         } catch (IOException | IllegalStateException e) {
+            e.printStackTrace();
             Alerts.giveLoadFailureAlert();
             return null;
         }
