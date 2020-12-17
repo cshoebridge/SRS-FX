@@ -13,7 +13,7 @@
     "daysFromFirstSeenToNextReview" : "P13D",
     "nativeLanguageTranslation" : "kazuma-sannnn please just cooperate!"
   }, {
-    "targetLanguageSentence" : "subete no sekinin watashi ga toru!",
+    "targetLanguageSentence" : "すべての責任　私が取る！",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-01",
     "daysFromFirstSeenToNextReview" : "P21D",
@@ -35,7 +35,7 @@
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
     "daysFromFirstSeenToNextReview" : "P1D",
-    "nativeLanguageTranslation" : "this is its back"
+    "nativeLanguageTranslation" : "I have now edited it"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/testGroup.json",
   "newCardsLeft" : 14,
