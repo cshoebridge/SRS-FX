@@ -14,58 +14,48 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.CardBackController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="File">
+               <MenuItem mnemonicParsing="false" text="Close"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+               <MenuItem mnemonicParsing="false" text="Delete"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Help">
+               <MenuItem mnemonicParsing="false" text="About"/>
+           </Menu>
+       </MenuBar>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Text fx:id="targetLanguageSentence" strokeType="OUTSIDE" strokeWidth="0.0" text="Target Text">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="nativeLanguageTranslation" strokeType="OUTSIDE" strokeWidth="0.0" text="Native Text">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="24.0" />
-               </font></Text>
-            <ImageView fx:id="descriptionImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </ImageView>
-         </children>
-      </VBox>
+       <VBox prefHeight="200.0" prefWidth="100.0">
+           <Text fx:id="targetLanguageSentence" strokeType="OUTSIDE" strokeWidth="0.0" text="Target Text">
+              <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+              </VBox.margin>
+              <font>
+                  <Font size="24.0"/>
+              </font>
+           </Text>
+           <Text fx:id="nativeLanguageTranslation" strokeType="OUTSIDE" strokeWidth="0.0" text="Native Text">
+              <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+              </VBox.margin>
+              <font>
+                  <Font size="24.0"/>
+              </font>
+           </Text>
+           <ImageView fx:id="descriptionImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                      preserveRatio="true">
+              <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+              </VBox.margin>
+           </ImageView>
+       </VBox>
    </center>
    <bottom>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button mnemonicParsing="false" onAction="#onPassButtonPressed" text="Pass" />
-            <Button mnemonicParsing="false" onAction="#onFailButtonPressed" text="Fail" />
-        </items>
-      </ToolBar>
+       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Button mnemonicParsing="false" onAction="#onPassButtonPressed" text="Pass"/>
+           <Button mnemonicParsing="false" onAction="#onFailButtonPressed" text="Fail"/>
+       </ToolBar>
    </bottom>
 </BorderPane>

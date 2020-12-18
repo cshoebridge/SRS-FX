@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,94 +18,76 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.BrowserController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar BorderPane.alignment="CENTER">
+           <Menu mnemonicParsing="false" text="File">
+               <MenuItem mnemonicParsing="false" text="Close"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+               <MenuItem mnemonicParsing="false" text="Delete"/>
+           </Menu>
+           <Menu mnemonicParsing="false" text="Help">
+               <MenuItem mnemonicParsing="false" text="About"/>
+           </Menu>
+       </MenuBar>
    </top>
    <left>
       <ListView fx:id="decksListView" prefHeight="375.0" prefWidth="128.0" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <TableView fx:id="deckTableView" prefHeight="108.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
-              <columns>
-                <TableColumn fx:id="frontColumn" prefWidth="103.0" text="Front" />
-                <TableColumn fx:id="backColumn" prefWidth="104.0" text="Back" />
-                  <TableColumn fx:id="stateColumn" prefWidth="63.0" text="State" />
-                  <TableColumn fx:id="nextDateColumn" prefWidth="156.0" text="Next Review Date" />
-              </columns>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </TableView>
-            <ScrollPane fitToWidth="true" prefHeight="127.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
-               <content>
-                  <VBox prefHeight="208.0" prefWidth="455.0">
-                     <children>
-                        <TextArea fx:id="frontTextArea" wrapText="true">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <TextArea fx:id="backTextArea" minHeight="-Infinity" prefHeight="64.0">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </TextArea>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#onSelectImageButtonPressed" text="Select image">
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onRemoveImageButtonPressed" text="Remove image">
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fx:id="imageView" fitHeight="98.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../../../../../Pictures/Lucina.gif" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
+       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <TableView fx:id="deckTableView" prefHeight="108.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
+               <columns>
+                   <TableColumn fx:id="frontColumn" prefWidth="103.0" text="Front"/>
+                   <TableColumn fx:id="backColumn" prefWidth="104.0" text="Back"/>
+                   <TableColumn fx:id="stateColumn" prefWidth="63.0" text="State"/>
+                   <TableColumn fx:id="nextDateColumn" prefWidth="156.0" text="Next Review Date"/>
+               </columns>
+              <VBox.margin>
+                  <Insets/>
+              </VBox.margin>
+           </TableView>
+           <ScrollPane fitToWidth="true" prefHeight="127.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
+               <VBox prefHeight="208.0" prefWidth="455.0">
+                   <TextArea fx:id="frontTextArea" wrapText="true">
+                       <font>
+                           <Font size="19.0"/>
+                       </font>
+                       <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                       </VBox.margin>
+                   </TextArea>
+                   <TextArea fx:id="backTextArea" minHeight="-Infinity" prefHeight="64.0">
+                       <VBox.margin>
+                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                       </VBox.margin>
+                       <font>
+                           <Font size="19.0"/>
+                       </font>
+                   </TextArea>
+                   <HBox prefHeight="100.0" prefWidth="200.0">
+                       <Button mnemonicParsing="false" onAction="#onSelectImageButtonPressed"
+                               text="Select image">
+                           <HBox.margin>
+                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                           </HBox.margin>
+                       </Button>
+                       <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                               onAction="#onRemoveImageButtonPressed" text="Remove image">
+                           <HBox.margin>
+                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                           </HBox.margin>
+                       </Button>
+                   </HBox>
+                   <HBox prefHeight="100.0" prefWidth="200.0">
+                       <ImageView fx:id="imageView" fitHeight="98.0" fitWidth="126.0" pickOnBounds="true"
+                                  preserveRatio="true">
+                           <HBox.margin>
+                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                           </HBox.margin>
+                       </ImageView>
+                   </HBox>
+               </VBox>
+           </ScrollPane>
+       </VBox>
    </center>
 </BorderPane>
