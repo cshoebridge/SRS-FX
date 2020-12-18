@@ -17,6 +17,8 @@ public class Card {
     private String targetLanguageSentence;
     private String nativeLanguageTranslation;
 
+    private String imagePath;
+
     private CardState state;
 
     private Period daysFromFirstSeenToNextReview;
@@ -27,12 +29,15 @@ public class Card {
     @JsonIgnore private boolean shouldBeReviewed;
 
     @JsonCreator
-    public Card(@JsonProperty("targetLanguageSentence") String frontSide, @JsonProperty("nativeLanguageSentence") String nativeLanguageTranslation,
+    public Card(@JsonProperty("targetLanguageSentence") String targetLanguageSentence,
+                @JsonProperty("nativeLanguageSentence") String nativeLanguageTranslation,
+                @JsonProperty("imagePath") String imagePath,
                 @JsonProperty("state") CardState state ,
                 @JsonProperty("initialViewDate") LocalDate initialViewDate,
                 @JsonProperty ("daysFromFirstSeenToNextReview") Period daysFromFirstSeenToNextReview) {
-        this.targetLanguageSentence = frontSide;
+        this.targetLanguageSentence = targetLanguageSentence;
         this.nativeLanguageTranslation = nativeLanguageTranslation;
+        this.imagePath = imagePath;
         this.state = Objects.requireNonNullElse(state, CardState.NEW);
         this.initialViewDate = initialViewDate;
 
@@ -46,6 +51,15 @@ public class Card {
             shouldBeReviewed = true;
             minutesUntilNextReviewInThisSession = Duration.ZERO;
         }
+    }
+
+    @Deprecated //only used for deserializing old cards now
+    public Card(@JsonProperty("targetLanguageSentence") String targetLanuageSentence,
+                @JsonProperty("nativeLanguageSentence") String nativeLanguageTranslation,
+                @JsonProperty("state") CardState state,
+                @JsonProperty("initialViewDate") LocalDate initialViewDate,
+                @JsonProperty ("daysFromFirstSeenToNextReview") Period daysFromFirstSeenToNextReview) {
+        this(targetLanuageSentence, nativeLanguageTranslation, null, state, initialViewDate, daysFromFirstSeenToNextReview);
     }
 
     public void writeNewCardToFile(String deckToAddToName){
@@ -73,6 +87,14 @@ public class Card {
 
     public void setNativeLanguageTranslation(String nativeLanguageTranslation) {
         this.nativeLanguageTranslation = nativeLanguageTranslation;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public CardState getState() {
@@ -124,6 +146,7 @@ public class Card {
     public static class Builder{
         private String frontSide;
         private String backSide;
+        private String imagePath;
 
         private CardState state;
 
@@ -137,13 +160,18 @@ public class Card {
             return this;
         }
 
+        public Builder imagePath(String imagePath) {
+            this.imagePath = imagePath;
+            return this;
+        }
+
         public Builder state(CardState state) {
             this.state = state;
             return this;
         }
 
         public Card build(){
-            return new Card(frontSide, backSide, state, LocalDate.now(), Period.ZERO);
+            return new Card(frontSide, backSide, imagePath, state, LocalDate.now(), Period.ZERO);
         }
     }
     //endregion

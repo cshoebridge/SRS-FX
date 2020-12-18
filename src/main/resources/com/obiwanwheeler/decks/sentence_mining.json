@@ -2,24 +2,34 @@
   "deckName" : "sentence_mining",
   "cards" : [ {
     "targetLanguageSentence" : "new card",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-14",
     "daysFromFirstSeenToNextReview" : "P13D",
     "nativeLanguageTranslation" : "baboboe"
   }, {
     "targetLanguageSentence" : "彼女お借りします",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
-    "daysFromFirstSeenToNextReview" : "P1D",
+    "daysFromFirstSeenToNextReview" : "P4D",
     "nativeLanguageTranslation" : "High quality anime"
   }, {
     "targetLanguageSentence" : "君のせいだよ！和也のせい！責任を取ればいいよね！",
+    "imagePath" : "C:/Users/Charlie/Pictures/ONE.jpg",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
-    "daysFromFirstSeenToNextReview" : "P1D",
+    "daysFromFirstSeenToNextReview" : "P4D",
     "nativeLanguageTranslation" : "It's your fault, Kazuya ! you should take responsibility!"
+  }, {
+    "targetLanguageSentence" : "knight",
+    "imagePath" : "C:/Users/Charlie/Pictures/discordlogo.png",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-18",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "3 elixir!"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/group2.json",
-  "newCardsLeft" : 8,
-  "lastDateReviewed" : "2020-12-16"
+  "newCardsLeft" : 9,
+  "lastDateReviewed" : "2020-12-18"
 }

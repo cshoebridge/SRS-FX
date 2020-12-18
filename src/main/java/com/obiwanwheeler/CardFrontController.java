@@ -20,7 +20,6 @@ public class CardFrontController implements Initializable {
     @FXML private Text targetLanguageSentence;
     private Card cardToReview;
 
-
     @FXML private void onShowAnswerButtonPressed(ActionEvent actionEvent) throws IOException {
         //switch to back side
         FXMLLoader loader = new FXMLLoader();

@@ -1,0 +1,21 @@
+{
+  "deckName" : "new deck",
+  "cards" : [ {
+    "targetLanguageSentence" : "knight",
+    "imagePath" : null,
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-18",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "3 elixir"
+  }, {
+    "targetLanguageSentence" : "this card has an image",
+    "imagePath" : "C:/Users/Charlie/Pictures/Lucina.gif",
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-18",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "It's a gif!"
+  } ],
+  "optionGroupFilePath" : null,
+  "newCardsLeft" : 12,
+  "lastDateReviewed" : "2020-12-18"
+}

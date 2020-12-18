@@ -15,7 +15,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -29,6 +33,7 @@ public class BrowserController implements Initializable {
     @FXML private TableColumn<Card, LocalDate> nextDateColumn;
     @FXML private TextArea frontTextArea;
     @FXML private TextArea backTextArea;
+    @FXML private ImageView imageView;
     private Deck selectedDeck;
     private Card selectedCard;
 
@@ -38,7 +43,7 @@ public class BrowserController implements Initializable {
         }
 
         decksListView.getSelectionModel().selectedItemProperty().addListener((selectedItem, s, t1) -> {
-            updatePreviousCard();
+            updateEditedCard();
             refreshDeckTable(selectedItem);
         });
     }
@@ -51,20 +56,52 @@ public class BrowserController implements Initializable {
         deckTableView.setItems(cardsObservableList);
     }
 
-    private void onCardSelected(ObservableValue<? extends Card> selectedCard){
-        updatePreviousCard();
-        if (selectedCard.getValue() != null){
-            this.selectedCard = selectedCard.getValue();
-            frontTextArea.setText(selectedCard.getValue().getTargetLanguageSentence());
-            backTextArea.setText(selectedCard.getValue().getNativeLanguageTranslation());
+    private void onCardSelected(ObservableValue<? extends Card> observableCard){
+        updateEditedCard();
+        if (observableCard.getValue() != null){
+            selectedCard = observableCard.getValue();
+            setUI();
         }
     }
 
-    private void updatePreviousCard(){
+    private void setUI() {
+        frontTextArea.setText(selectedCard.getTargetLanguageSentence());
+        backTextArea.setText(selectedCard.getNativeLanguageTranslation());
+        String imagePath = selectedCard.getImagePath();
+        if (imagePath != null){
+            File imageFile = new File(imagePath);
+            Image image = new Image(imageFile.toURI().toString());
+            imageView.setImage(image);
+        }
+        else {
+            imageView.setImage(null);
+        }
+    }
+
+    @FXML private void onSelectImageButtonPressed(){
+        if (selectedCard == null)
+            return;
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*jpeg"));
+
+        File selectedImage = fileChooser.showOpenDialog(null);
+
+        Image image = new Image(selectedImage.toURI().toString());
+        imageView.setImage(image);
+        updateEditedCard();
+    }
+
+    private void updateEditedCard(){
         if (selectedCard != null && selectedDeck != null){
             selectedCard.setTargetLanguageSentence(frontTextArea.getText());
             selectedCard.setNativeLanguageTranslation(backTextArea.getText());
-            Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
+            Image currentImage = imageView.getImage();
+            if (currentImage != null){
+                String imagePath = currentImage.getUrl();
+                selectedCard.setImagePath(imagePath.substring(imagePath.indexOf("/") + 1));
+                Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
+            }
         }
     }
 

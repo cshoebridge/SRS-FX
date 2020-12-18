@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -41,31 +45,55 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="deckTableView" prefHeight="263.0" prefWidth="472.0">
+            <TableView fx:id="deckTableView" prefHeight="108.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
               <columns>
                 <TableColumn fx:id="frontColumn" prefWidth="103.0" text="Front" />
                 <TableColumn fx:id="backColumn" prefWidth="104.0" text="Back" />
                   <TableColumn fx:id="stateColumn" prefWidth="63.0" text="State" />
                   <TableColumn fx:id="nextDateColumn" prefWidth="156.0" text="Next Review Date" />
               </columns>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </TableView>
-            <HBox prefHeight="171.0" prefWidth="472.0">
-               <children>
-                  <TextArea fx:id="frontTextArea" prefHeight="201.0" prefWidth="472.0" wrapText="true">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </TextArea>
-                  <TextArea fx:id="backTextArea" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="472.0">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </TextArea>
-               </children>
-            </HBox>
+            <ScrollPane fitToWidth="true" prefHeight="127.0" prefWidth="472.0" VBox.vgrow="SOMETIMES">
+               <content>
+                  <VBox prefHeight="208.0" prefWidth="455.0">
+                     <children>
+                        <TextArea fx:id="frontTextArea" wrapText="true">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <TextArea fx:id="backTextArea" minHeight="-Infinity" prefHeight="64.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <Button mnemonicParsing="false" onAction="#onSelectImageButtonPressed" text="Select image">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="imageView" fitHeight="98.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Pictures/Lucina.gif" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </VBox>
    </center>

@@ -1,43 +1,49 @@
 {
   "deckName" : "test deck",
   "cards" : [ {
-    "targetLanguageSentence" : "ikeru ka?",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-04",
-    "daysFromFirstSeenToNextReview" : "P13D",
-    "nativeLanguageTranslation" : "I wonder if it'll work?"
-  }, {
-    "targetLanguageSentence" : "kazuma-sannnnnn kyouryoku shite yo kazuma-sannnn!",
-    "state" : "LEARNT",
-    "initialViewDate" : "2020-12-04",
-    "daysFromFirstSeenToNextReview" : "P13D",
-    "nativeLanguageTranslation" : "kazuma-sannnn please just cooperate!"
-  }, {
     "targetLanguageSentence" : "すべての責任　私が取る！",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-01",
     "daysFromFirstSeenToNextReview" : "P21D",
     "nativeLanguageTranslation" : "I'll take all responsibility"
   }, {
     "targetLanguageSentence" : "baka ni shinaide kudasai",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-11-20",
     "daysFromFirstSeenToNextReview" : "P31D",
     "nativeLanguageTranslation" : "please don't make fun of me"
   }, {
     "targetLanguageSentence" : "neeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "imagePath" : "C:/Users/Charlie/Pictures/ruby.png",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-01",
     "daysFromFirstSeenToNextReview" : "P21D",
     "nativeLanguageTranslation" : "*shion noises*"
   }, {
+    "targetLanguageSentence" : "kazuma-sannnnnn kyouryoku shite yo kazuma-sannnn!",
+    "imagePath" : null,
+    "state" : "LEARNT",
+    "initialViewDate" : "2020-12-04",
+    "daysFromFirstSeenToNextReview" : "P16D",
+    "nativeLanguageTranslation" : "kazuma-sannnn please just cooperate!"
+  }, {
     "targetLanguageSentence" : "this is a new card\t\t\t",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
-    "daysFromFirstSeenToNextReview" : "P1D",
+    "daysFromFirstSeenToNextReview" : "P4D",
     "nativeLanguageTranslation" : "I have now edited it"
+  }, {
+    "targetLanguageSentence" : "ikeru ka?",
+    "imagePath" : null,
+    "state" : "NEW",
+    "initialViewDate" : "2020-12-04",
+    "daysFromFirstSeenToNextReview" : null,
+    "nativeLanguageTranslation" : "C:\\Users\\Charlie\\Pictures\\Lucina.gif"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/testGroup.json",
-  "newCardsLeft" : 14,
-  "lastDateReviewed" : "2020-12-16"
+  "newCardsLeft" : 15,
+  "lastDateReviewed" : "2020-12-18"
 }

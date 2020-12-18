@@ -43,19 +43,21 @@ public class Reviewer {
     }
 
     private static Deck initialiseUpdatedDeck(Deck sourceDeck){
-        if (sourceDeck.getCards().isEmpty()){
-            updatedDeck = new Deck(Collections.emptyList());
-            return updatedDeck;
-        }
         updatedDeck = new Deck(new LinkedList<>());
         updatedDeck.setDeckName(sourceDeck.getDeckName());
         updatedDeck.setOptionGroupFilePath(sourceDeck.getOptionGroupFilePath());
         updatedDeck.setLastDateReviewed(LocalDate.now());
-        if (sourceDeck.getLastDateReviewed().isBefore(LocalDate.now())){
+
+        if (sourceDeck.getLastDateReviewed() == null){
             updatedDeck.setNewCardsLeft(sourceDeck.getOptionGroup().getNumberOfNewCardsToLearn());
         }
-        else {
-            updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
+        else{
+            if (sourceDeck.getLastDateReviewed().isBefore(LocalDate.now())){
+                updatedDeck.setNewCardsLeft(sourceDeck.getOptionGroup().getNumberOfNewCardsToLearn());
+            }
+            else {
+                updatedDeck.setNewCardsLeft(sourceDeck.getNewCardsLeft());
+            }
         }
         return updatedDeck;
     }

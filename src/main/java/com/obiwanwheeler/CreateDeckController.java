@@ -1,6 +1,7 @@
 package com.obiwanwheeler;
 
 import com.obiwanwheeler.objects.Deck;
+import com.obiwanwheeler.utilities.OptionGroupFileParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +17,7 @@ public class CreateDeckController {
     @FXML private void onCreateButtonPressed(ActionEvent actionEvent){
         //create deck
         Deck newDeck = new Deck(deckNameTextField.getText(), null);
+        newDeck.setNewCardsLeft(OptionGroupFileParser.DEFAULT_OPTION_GROUP.getNumberOfNewCardsToLearn());
         newDeck.writeDeckToFile();
         ((Stage) ((Node)(actionEvent.getSource())).getScene().getWindow()).close();
         mainMenuController.refreshDeckList();
