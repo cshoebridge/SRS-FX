@@ -44,13 +44,19 @@ public class BrowserController implements Initializable {
 
         decksListView.getSelectionModel().selectedItemProperty().addListener((selectedItem, s, t1) -> {
             updateEditedCard();
-            refreshDeckTable(selectedItem);
+            onDeckSelected(selectedItem);
         });
     }
 
-    private void refreshDeckTable(ObservableValue<? extends String> selectedDeck) {
+    private void onDeckSelected(ObservableValue<? extends String> selectedDeck) {
+
+        this.selectedCard = null;
+        emptyUI();
+
         this.selectedDeck = DeckFileParser.deserializeDeck(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getValue() + FileExtensions.JSON);
+        
         deckTableView.getItems().clear();
+
         ObservableList<Card> cardsObservableList = FXCollections.observableArrayList();
         cardsObservableList.addAll(this.selectedDeck.getCards());
         deckTableView.setItems(cardsObservableList);
@@ -78,6 +84,12 @@ public class BrowserController implements Initializable {
         }
     }
 
+    private void emptyUI() {
+        frontTextArea.setText(null);
+        backTextArea.setText(null);
+        imageView.setImage(null);
+    }
+
     @FXML private void onSelectImageButtonPressed(){
         if (selectedCard == null)
             return;
@@ -86,9 +98,18 @@ public class BrowserController implements Initializable {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*jpeg"));
 
         File selectedImage = fileChooser.showOpenDialog(null);
+        if (selectedImage != null){
+            Image image = new Image(selectedImage.toURI().toString());
+            imageView.setImage(image);
+            updateEditedCard();
+        }
+    }
 
-        Image image = new Image(selectedImage.toURI().toString());
-        imageView.setImage(image);
+    @FXML private void onRemoveImageButtonPressed(){
+        if (selectedCard == null)
+            return;
+
+        imageView.setImage(null);
         updateEditedCard();
     }
 
@@ -100,8 +121,11 @@ public class BrowserController implements Initializable {
             if (currentImage != null){
                 String imagePath = currentImage.getUrl();
                 selectedCard.setImagePath(imagePath.substring(imagePath.indexOf("/") + 1));
-                Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
             }
+            else {
+                selectedCard.setImagePath(null);
+            }
+            Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
         }
     }
 

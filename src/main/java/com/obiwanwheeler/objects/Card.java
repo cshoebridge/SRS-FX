@@ -53,15 +53,6 @@ public class Card {
         }
     }
 
-    @Deprecated //only used for deserializing old cards now
-    public Card(@JsonProperty("targetLanguageSentence") String targetLanuageSentence,
-                @JsonProperty("nativeLanguageSentence") String nativeLanguageTranslation,
-                @JsonProperty("state") CardState state,
-                @JsonProperty("initialViewDate") LocalDate initialViewDate,
-                @JsonProperty ("daysFromFirstSeenToNextReview") Period daysFromFirstSeenToNextReview) {
-        this(targetLanuageSentence, nativeLanguageTranslation, null, state, initialViewDate, daysFromFirstSeenToNextReview);
-    }
-
     public void writeNewCardToFile(String deckToAddToName){
         String deckToAddToPath = DeckFileParser.DECK_FOLDER_PATH + deckToAddToName + FileExtensions.JSON;
         Deck tempDeck = DeckFileParser.deserializeDeck(deckToAddToPath);
