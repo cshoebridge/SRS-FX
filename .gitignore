@@ -5,3 +5,6 @@
 #Maven
 WurmwellSRS.iml
 target/
+META-INF/
+out/
+src/main/resources/META-INF
