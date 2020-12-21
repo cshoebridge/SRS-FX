@@ -44,11 +44,11 @@ public class BrowserController implements Initializable {
 
         decksListView.getSelectionModel().selectedItemProperty().addListener((selectedItem, s, t1) -> {
             updateEditedCard();
-            onDeckSelected(selectedItem);
+            populateCardTable(selectedItem);
         });
     }
 
-    private void onDeckSelected(ObservableValue<? extends String> selectedDeck) {
+    private void populateCardTable(ObservableValue<? extends String> selectedDeck) {
 
         this.selectedCard = null;
         emptyUI();
@@ -90,6 +90,18 @@ public class BrowserController implements Initializable {
         imageView.setImage(null);
     }
 
+    @FXML private void onDeleteCardButtonPressed(){
+        selectedDeck.getCards().remove(selectedCard);
+        deckTableView.getItems().remove(selectedCard);
+        selectedDeck = refreshSelectedDeck();
+    }
+
+    private Deck refreshSelectedDeck()
+    {
+        Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
+        return DeckFileParser.deserializeDeck(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON);
+    }
+
     @FXML private void onSelectImageButtonPressed(){
         if (selectedCard == null)
             return;
@@ -113,20 +125,20 @@ public class BrowserController implements Initializable {
         updateEditedCard();
     }
 
-    private void updateEditedCard(){
-        if (selectedCard != null && selectedDeck != null){
+    private void updateEditedCard() {
+        if (selectedCard != null && selectedDeck != null) {
             selectedCard.setTargetLanguageSentence(frontTextArea.getText());
             selectedCard.setNativeLanguageTranslation(backTextArea.getText());
             Image currentImage = imageView.getImage();
-            if (currentImage != null){
+            if (currentImage != null) {
                 String imagePath = currentImage.getUrl();
                 selectedCard.setImagePath(imagePath.substring(imagePath.indexOf("/") + 1));
-            }
-            else {
+            } else {
                 selectedCard.setImagePath(null);
             }
-            Serializer.SERIALIZER_SINGLETON.serializeToExisting(DeckFileParser.DECK_FOLDER_PATH + selectedDeck.getName() + FileExtensions.JSON, selectedDeck);
+            refreshSelectedDeck();
         }
+        deckTableView.refresh();
     }
 
     @Override

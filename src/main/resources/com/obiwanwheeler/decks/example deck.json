@@ -1,0 +1,14 @@
+{
+  "deckName" : "example deck",
+  "cards" : [ {
+    "targetLanguageSentence" : "This is what the front of a card might look like",
+    "imagePath" : null,
+    "state" : "NEW",
+    "initialViewDate" : "2020-12-21",
+    "daysFromFirstSeenToNextReview" : null,
+    "nativeLanguageTranslation" : "This is what it's back might look like"
+  } ],
+  "optionGroupFilePath" : null,
+  "newCardsLeft" : 15,
+  "lastDateReviewed" : null
+}

@@ -9,34 +9,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0"
-          prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="com.obiwanwheeler.DeleteWarningController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.DeleteWarningController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <Text fx:id="deleteText" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Are you sure you want to delete your deck? (this cannot be undone)" wrappingWidth="463.287109375"
-          GridPane.halignment="LEFT">
+    <Text fx:id="deleteText" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete this? (this cannot be undone)" wrappingWidth="463.287109375" GridPane.halignment="LEFT">
         <font>
-            <Font name="System Bold" size="14.0"/>
+            <Font name="System Bold" size="14.0" />
         </font>
         <GridPane.margin>
-            <Insets bottom="5.0" left="10.0" right="5.0" top="10.0"/>
+            <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
         </GridPane.margin>
     </Text>
     <ButtonBar prefHeight="48.0" prefWidth="470.0" GridPane.rowIndex="1">
         <buttons>
-            <Button mnemonicParsing="false" onAction="#onCancelButtonPressed" text="Cancel"/>
-        <Button layoutX="405.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteButtonPressed"
-                text="Delete"/>
+            <Button mnemonicParsing="false" onAction="#onCancelButtonPressed" text="Cancel" />
+        <Button layoutX="405.0" layoutY="10.0" mnemonicParsing="false" onAction="#onDeleteButtonPressed" text="Delete" />
         </buttons>
         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </GridPane.margin>
     </ButtonBar>
 </GridPane>

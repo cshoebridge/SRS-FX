@@ -1,6 +1,0 @@
-{
-  "optionGroupName" : "group2",
-  "graduatingIntervalInDays" : 1,
-  "intervalSteps" : [ 1, 10, 15 ],
-  "numberOfNewCardsToLearn" : 10
-}

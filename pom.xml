@@ -54,10 +54,29 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>0.0.3</version>
                 <configuration>
                     <mainClass>com.obiwanwheeler.App</mainClass>
+                    <launcher>launch.exe</launcher>
+                    <compress>2</compress>
+                    <jlinkZipName>WurmwellSRS</jlinkZipName>
+                    <jlinkImageName>WurmwellSRS</jlinkImageName>
+                    <noManPages>true</noManPages>
+                    <noHeaderFiles>true</noHeaderFiles>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jlink-plugin</artifactId>
+                <version>3.0.0-alpha-1</version>
+                <extensions>true</extensions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>6.2</version> <!-- Use newer version of ASM -->
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
