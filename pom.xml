@@ -42,13 +42,35 @@
         </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.fxml</include>
+                    <include>**/*.json</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/java/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
                     <release>11</release>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -57,7 +79,7 @@
                 <version>0.0.3</version>
                 <configuration>
                     <mainClass>com.obiwanwheeler.App</mainClass>
-                    <launcher>launch.exe</launcher>
+                    <launcher>launch.sh</launcher>
                     <compress>2</compress>
                     <jlinkZipName>WurmwellSRS</jlinkZipName>
                     <jlinkImageName>WurmwellSRS</jlinkImageName>

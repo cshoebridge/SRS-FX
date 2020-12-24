@@ -18,10 +18,17 @@ public final class Alerts {
         deleteFailureAlert.showAndWait();
     }
 
-    public static void giveDeckUnfoundAlert() {
+    public static void giveDeckUnfoundAlert(){
         Alert unfoundItemAlert = new Alert(Alert.AlertType.ERROR);
         unfoundItemAlert.setHeaderText("Unfound item error");
         unfoundItemAlert.setContentText("The requested deck could not be found, \nit is probably missing or corrupted");
         unfoundItemAlert.showAndWait();
+    }
+
+    public static void giveInvalidStepEntryAlert(){
+        Alert invalidFormatAlert = new Alert(Alert.AlertType.ERROR);
+        invalidFormatAlert.setHeaderText("Invalid step");
+        invalidFormatAlert.setContentText("Steps must be numbers");
+        invalidFormatAlert.showAndWait();
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
+import com.obiwanwheeler.utilities.OptionGroupFileParser;
 
 import java.util.List;
 
@@ -14,8 +15,6 @@ public class OptionGroup implements SerializableObject , Updatable {
     private int graduatingIntervalInDays;
     private List<Integer> intervalSteps;
     private int numberOfNewCardsToLearn;
-
-    private static final String OPTION_GROUP_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/option-groups/";
 
     @JsonCreator
     public OptionGroup(@JsonProperty("optionGroupName") String optionGroupName,
@@ -63,7 +62,7 @@ public class OptionGroup implements SerializableObject , Updatable {
 
     @Override
     public String getFolderPath() {
-        return OPTION_GROUP_FOLDER_PATH;
+        return OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH;
     }
 
     @Override

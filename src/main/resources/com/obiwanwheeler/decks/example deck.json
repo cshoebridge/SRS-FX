@@ -8,7 +8,7 @@
     "daysFromFirstSeenToNextReview" : null,
     "nativeLanguageTranslation" : "This is what it's back might look like"
   } ],
-  "optionGroupFilePath" : null,
+  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/failureTest.json",
   "newCardsLeft" : 15,
   "lastDateReviewed" : null
 }

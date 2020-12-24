@@ -5,10 +5,7 @@ import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;
 import com.obiwanwheeler.objects.Deck;
 import com.obiwanwheeler.objects.OptionGroup;
-import com.obiwanwheeler.utilities.DeckFileParser;
-import com.obiwanwheeler.utilities.FileExtensions;
-import com.obiwanwheeler.utilities.OptionGroupFileParser;
-import com.obiwanwheeler.utilities.Serializer;
+import com.obiwanwheeler.utilities.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -101,16 +98,21 @@ public class DeckSettingsController implements Initializable {
 
     @FXML private void onSaveButtonPressed(){
         mainMenuController.refreshDeckList();
-        if (selectedDeck == null){
-            return;
+        //must have an option group selected
+        if (selectedOptionGroup != null){
+            try{
+                OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText()
+                        ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
+            }
+            catch (NumberFormatException e){
+                Alerts.giveInvalidStepEntryAlert();
+                return;
+            }
+            if (selectedDeck != null){
+                selectedDeck.setOptionGroupFilePath(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
+                Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
+            }
         }
-        if (selectedOptionGroup == null){
-            return;
-        }
-        OptionGroupCreator.editOptionsGroup(optionGroupDropdown.getValue(), stepsField.getText()
-                ,Integer.parseInt(newCardsField.getText()), Integer.parseInt(graduatingIntervalField.getText()));
-        selectedDeck.setOptionGroupFilePath(getFilePath(OptionGroupFileParser.OPTION_GROUP_FOLDER_PATH, optionGroupDropdown.getValue()));
-        Serializer.SERIALIZER_SINGLETON.serializeToExisting(getFilePath(DeckFileParser.DECK_FOLDER_PATH, deckDropdown.getValue()), selectedDeck);
     }
 
     @FXML private void onDeleteDeckButtonPressed() {
