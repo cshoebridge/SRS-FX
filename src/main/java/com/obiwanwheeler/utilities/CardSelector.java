@@ -5,7 +5,7 @@ import com.obiwanwheeler.objects.Card;
 import java.util.List;
 import java.util.Random;
 
-public class CardSelector {
+public final class CardSelector {
 
     private static final Random random = new Random();
 

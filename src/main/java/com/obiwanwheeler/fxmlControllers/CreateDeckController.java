@@ -1,4 +1,4 @@
-package com.obiwanwheeler;
+package com.obiwanwheeler.fxmlControllers;
 
 import com.obiwanwheeler.objects.Deck;
 import com.obiwanwheeler.utilities.OptionGroupFileParser;

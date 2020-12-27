@@ -1,7 +1,12 @@
-package com.obiwanwheeler;
+package com.obiwanwheeler.fxmlControllers;
 
+import com.obiwanwheeler.App;
+import com.obiwanwheeler.CardBack;
+import com.obiwanwheeler.Reviewer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 
 public class BasicCardBackController extends CardBack
 {
@@ -10,7 +15,7 @@ public class BasicCardBackController extends CardBack
         Reviewer.processCardMarkedGood(cardToReview);
         if (Reviewer.sessionIsFinished()){
             //go to review finished screen
-            finishReview();
+            finishReview(actionEvent);
             return;
         }
         toNextCard(actionEvent);
@@ -20,9 +25,16 @@ public class BasicCardBackController extends CardBack
         Reviewer.processCardMarkedBad(cardToReview);
         if (Reviewer.sessionIsFinished()){
             //go to review finished screen
-            finishReview();
+            finishReview(actionEvent);
             return;
         }
         toNextCard(actionEvent);
+    }
+
+    @Override
+    protected void toNextCard(ActionEvent eventSource)
+    {
+        Stage currentStage = (Stage)((Node)eventSource.getSource()).getScene().getWindow();
+        App.setRoot(currentStage.getScene(), "basicCardFront");
     }
 }

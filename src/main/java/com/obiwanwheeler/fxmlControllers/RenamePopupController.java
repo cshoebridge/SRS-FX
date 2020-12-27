@@ -1,4 +1,4 @@
-package com.obiwanwheeler;
+package com.obiwanwheeler.fxmlControllers;
 
 import com.obiwanwheeler.interfaces.Updatable;
 import com.obiwanwheeler.interfaces.SerializableObject;

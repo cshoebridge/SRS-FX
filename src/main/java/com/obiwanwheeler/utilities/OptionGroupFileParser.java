@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-public class OptionGroupFileParser {
+public final class OptionGroupFileParser {
 
     public static final String OPTION_GROUP_FOLDER_PATH = "src/main/resources/com/obiwanwheeler/option-groups/";
     public static final OptionGroup DEFAULT_OPTION_GROUP = new OptionGroup("default", 1, List.of(1, 10), 15);

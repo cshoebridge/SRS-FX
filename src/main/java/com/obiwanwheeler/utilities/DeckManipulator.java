@@ -8,7 +8,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
-public class DeckManipulator {
+public final class DeckManipulator {
 
     public static final DeckManipulator DECK_MANIPULATOR_SINGLETON = new DeckManipulator();
 

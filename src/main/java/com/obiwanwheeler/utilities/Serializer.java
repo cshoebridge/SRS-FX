@@ -8,7 +8,7 @@ import com.obiwanwheeler.interfaces.SerializableObject;
 import java.io.File;
 import java.io.IOException;
 
-public class Serializer {
+public final class Serializer {
 
     public static final Serializer SERIALIZER_SINGLETON = new Serializer();
     private final ObjectMapper OBJECT_MAPPER = new ObjectMapper();

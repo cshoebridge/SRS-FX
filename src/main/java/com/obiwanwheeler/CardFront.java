@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CardFront implements Initializable
+public abstract class CardFront implements Initializable
 {
     @FXML private Text targetLanguageSentenceText;
     protected Card cardToReview;

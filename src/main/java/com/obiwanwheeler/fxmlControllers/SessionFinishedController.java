@@ -1,5 +1,7 @@
-package com.obiwanwheeler;
+package com.obiwanwheeler.fxmlControllers;
 
+import com.obiwanwheeler.App;
+import com.obiwanwheeler.Reviewer;
 import com.obiwanwheeler.utilities.Serializer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
