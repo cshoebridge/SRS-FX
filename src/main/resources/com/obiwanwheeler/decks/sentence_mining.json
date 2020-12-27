@@ -2,7 +2,7 @@
   "deckName" : "sentence_mining",
   "cards" : [ {
     "targetLanguageSentence" : "君のせいだよ！和也のせい！責任を取ればいいよね！",
-    "imagePath" : "C:/Users/Charlie/Pictures/ONE.jpg",
+    "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
     "daysFromFirstSeenToNextReview" : "P7D",
