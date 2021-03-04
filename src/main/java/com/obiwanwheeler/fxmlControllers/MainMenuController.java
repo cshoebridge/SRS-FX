@@ -2,20 +2,17 @@ package com.obiwanwheeler.fxmlControllers;
 
 import com.obiwanwheeler.App;
 import com.obiwanwheeler.Reviewer;
-import com.obiwanwheeler.utilities.Alerts;
 import com.obiwanwheeler.utilities.DeckFileParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,29 +23,20 @@ public class MainMenuController implements Initializable {
     @FXML
     private void onCreateDeckButtonPressed() {
         FXMLLoader loader = new FXMLLoader();
-        URL path = getClass().getResource("fxmls/createDeck.fxml");
-        loader.setLocation(path);
+        Scene createScene = App.getSceneFromFXMLWithLoader("createDeck", loader);
 
-        Parent deckCreateParent;
-        try {
-            deckCreateParent = loader.load();
-        } catch (IOException e) {
-            Alerts.giveLoadFailureAlert();
+        if (createScene == null)
             return;
-        }
 
-        Scene deckCreateScene = new Scene(deckCreateParent);
 
         CreateDeckController createDeckController = loader.getController();
         createDeckController.initController(this);
-        Stage deckCreateStage = new Stage();
-        deckCreateStage.setScene(deckCreateScene);
-        deckCreateStage.show();
+        App.createNewStage(createScene);
     }
 
     @FXML
     private void onAddCardButtonPressed() {
-        Scene addCardScene = App.getSceneFromFXML("createCard", new FXMLLoader());
+        Scene addCardScene = App.getSceneFromFXMLWithLoader("createCard", new FXMLLoader());
         if (addCardScene != null)
             App.createNewStage(addCardScene);
     }
@@ -56,10 +44,11 @@ public class MainMenuController implements Initializable {
     @FXML
     private void onEditButtonPressed() {
         FXMLLoader loader = new FXMLLoader();
-        Scene editScene = App.getSceneFromFXML("deckSettings", loader);
+        Scene editScene = App.getSceneFromFXMLWithLoader("deckSettings", loader);
 
         if (editScene == null)
             return;
+
 
         DeckSettingsController deckSettingsController = loader.getController();
         deckSettingsController.initData(this);
@@ -68,7 +57,7 @@ public class MainMenuController implements Initializable {
 
     @FXML
     private void onBrowseButtonPressed() {
-        Scene addCardScene = App.getSceneFromFXML("browser", new FXMLLoader());
+        Scene addCardScene = App.getSceneFromFXMLWithLoader("browser", new FXMLLoader());
         if (addCardScene != null)
             App.createNewStage(addCardScene);
     }

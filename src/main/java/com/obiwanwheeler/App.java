@@ -34,7 +34,7 @@ public class App extends Application {
         }
     }
 
-    public static Scene getSceneFromFXML(String targetFXML, FXMLLoader loader){
+    public static Scene getSceneFromFXMLWithLoader(String targetFXML, FXMLLoader loader){
         URL path = App.class.getResource("fxmls/" + targetFXML + FileExtensions.FXML);
 
         Parent popupParent;

@@ -54,7 +54,7 @@ public class InputCardFrontController extends CardFront
 
         for (int i = 0; i < ansWords.length; i++)
         {
-            List<String> synonyms = Thesaurus.getSynonyms(ansWords[i]);;
+            List<String> synonyms = Thesaurus.getSynonyms(ansWords[i]);
 
             for (String synonym : synonyms)
             {

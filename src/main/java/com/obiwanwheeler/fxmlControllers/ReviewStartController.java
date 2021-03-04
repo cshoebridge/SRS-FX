@@ -17,7 +17,8 @@ public class ReviewStartController implements Initializable
 
     @FXML private ComboBox<String> studyStyleDropdown;
 
-    @FXML private void onStartButtonPressed(ActionEvent actionEvent) {
+    @FXML
+    private void onStartButtonPressed(ActionEvent actionEvent) {
         if (studyStyleDropdown.getValue() == null)
             return;
 
@@ -42,6 +43,12 @@ public class ReviewStartController implements Initializable
 
     private void finishSession(Stage stage){
         App.setRoot(stage.getScene(), "sessionFinished");
+    }
+
+    @FXML
+    private void onReturnPressed(ActionEvent actionEvent){
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        App.setRoot(currentStage.getScene(), "mainMenu");
     }
 
     @Override

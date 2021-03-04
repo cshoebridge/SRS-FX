@@ -63,7 +63,7 @@ public class DeckSettingsController implements Initializable {
 
     @FXML private void onMakeNewGroupButtonPressed() {
         FXMLLoader loader = new FXMLLoader();
-        Scene popupScene = App.getSceneFromFXML("newOptionGroupPopup", loader);
+        Scene popupScene = App.getSceneFromFXMLWithLoader("newOptionGroupPopup", loader);
 
         if (popupScene == null)
             return;
@@ -87,7 +87,7 @@ public class DeckSettingsController implements Initializable {
 
     private <T extends Updatable & SerializableObject> void createRenamePopup(T objectToRename) {
         FXMLLoader loader = new FXMLLoader();
-        Scene popupScene = App.getSceneFromFXML("renamePopup", loader);
+        Scene popupScene = App.getSceneFromFXMLWithLoader("renamePopup", loader);
 
         if (popupScene == null)
             return;
@@ -130,7 +130,7 @@ public class DeckSettingsController implements Initializable {
 
     private <T extends Updatable & SerializableObject> void createDeletePopup(T objectToDelete) {
         FXMLLoader loader = new FXMLLoader();
-        Scene deletionWarningScene = App.getSceneFromFXML("deletePopup", loader);
+        Scene deletionWarningScene = App.getSceneFromFXMLWithLoader("deletePopup", loader);
 
         if (deletionWarningScene == null)
             return;

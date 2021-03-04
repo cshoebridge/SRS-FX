@@ -53,10 +53,10 @@ public class Thesaurus {
 
     private static HttpURLConnection setupConnection(String wordToSearch) throws IOException
     {
-        String url = "https://api.datamuse.com/words?rel_syn=" + wordToSearch;
+        String apiEndpoint = "https://api.datamuse.com/words?rel_syn=" + wordToSearch;
 
-        URL obj = new URL(url);
-        HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+        URL urlObj = new URL(apiEndpoint);
+        HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
 
         connection.setRequestMethod("GET");
         String USER_AGENT = "Mozilla/5.0";
@@ -108,7 +108,6 @@ public class Thesaurus {
 
     }
 
-    // word and score attributes are from DataMuse API
     static class Word {
         private String word;
         private int score;
