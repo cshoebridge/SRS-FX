@@ -1,4 +1,4 @@
-package com.obiwanwheeler.fxmlControllers;
+package com.obiwanwheeler.fxmlcontrollers;
 
 import com.obiwanwheeler.objects.Card;
 import com.obiwanwheeler.objects.Deck;

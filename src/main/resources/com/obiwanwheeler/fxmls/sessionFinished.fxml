@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.fxmlControllers.SessionFinishedController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.obiwanwheeler.fxmlcontrollers.SessionFinishedController">
    <Text layoutX="261.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No more cards"/>
    <Button layoutX="280.0" layoutY="145.0" mnemonicParsing="false" onAction="#onBackButtonPressed" text="Back"/>
 </AnchorPane>

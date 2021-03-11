@@ -1,4 +1,4 @@
-package com.obiwanwheeler.fxmlControllers;
+package com.obiwanwheeler.fxmlcontrollers;
 
 import com.obiwanwheeler.App;
 import com.obiwanwheeler.CardFront;

@@ -1,4 +1,4 @@
-package com.obiwanwheeler.fxmlControllers;
+package com.obiwanwheeler.fxmlcontrollers;
 
 import com.obiwanwheeler.creators.OptionGroupCreator;
 import javafx.event.ActionEvent;
