@@ -5,10 +5,17 @@
     "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-27",
-    "daysFromFirstSeenToNextReview" : "P1D",
+    "daysFromFirstSeenToNextReview" : "P11D",
     "nativeLanguageTranslation" : "This is what it's back might look like"
+  }, {
+    "targetLanguageSentence" : "new card!\t",
+    "imagePath" : null,
+    "state" : "LEARNT",
+    "initialViewDate" : "2021-03-18",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "wow, pretty cool huh?"
   } ],
-  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/failureTest.json",
+  "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/default.json",
   "newCardsLeft" : 14,
-  "lastDateReviewed" : "2020-12-27"
+  "lastDateReviewed" : "2021-03-18"
 }

@@ -1,6 +1,0 @@
-{
-  "optionGroupName" : "failureTest",
-  "graduatingIntervalInDays" : 1,
-  "intervalSteps" : [ 1, 10, 15 ],
-  "numberOfNewCardsToLearn" : 15
-}

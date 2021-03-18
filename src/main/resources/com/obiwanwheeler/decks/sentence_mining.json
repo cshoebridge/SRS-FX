@@ -5,17 +5,17 @@
     "imagePath" : null,
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
-    "daysFromFirstSeenToNextReview" : "P7D",
+    "daysFromFirstSeenToNextReview" : "P13D",
     "nativeLanguageTranslation" : "It's your fault, Kazuya ! you should take responsibility!"
   }, {
     "targetLanguageSentence" : "彼女お借りします",
-    "imagePath" : null,
+    "imagePath" : "C:/Users/Charlie/Pictures/anny-watermarked.png",
     "state" : "LEARNT",
     "initialViewDate" : "2020-12-16",
-    "daysFromFirstSeenToNextReview" : "P7D",
-    "nativeLanguageTranslation" : "High quality anime"
+    "daysFromFirstSeenToNextReview" : "P12D",
+    "nativeLanguageTranslation" : "High quality anime!!"
   } ],
   "optionGroupFilePath" : "src/main/resources/com/obiwanwheeler/option-groups/default.json",
   "newCardsLeft" : 15,
-  "lastDateReviewed" : "2020-12-21"
+  "lastDateReviewed" : "2021-03-18"
 }

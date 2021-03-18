@@ -7,34 +7,55 @@ import com.obiwanwheeler.utilities.Thesaurus;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class InputCardFrontController extends CardFront
 {
-    @FXML private TextField responseTextField;
 
-    @FXML private void onResponseGiven(ActionEvent actionEvent)
+    @FXML
+    private TextField responseTextField;
+    @FXML
+    private Button nextButton;
+    @FXML
+    private void onResponseGiven(ActionEvent actionEvent)
     {
+        
         String response = responseTextField.getText();
-        if (isCloseEnough(response, cardToReview.getNativeLanguageTranslation())){
+        nativeLanguageSentenceText.setText(cardToReview.getNativeLanguageTranslation());
+
+        nextButton.setVisible(true);
+        nextButton.setDisable(false);
+
+        if (isCloseEnough(response, cardToReview.getNativeLanguageTranslation()))
+        {
             Reviewer.processCardMarkedGood(cardToReview);
-            if (Reviewer.sessionIsFinished()){
+            if (Reviewer.sessionIsFinished())
+            {
                 //go to review finished screen
                 finishReview(actionEvent);
-                return;
             }
-        }
-        else{
+        } else
+        {
             Reviewer.processCardMarkedBad(cardToReview);
         }
+    }
+
+    @FXML
+    private void onNextButtonPress(ActionEvent actionEvent) {
+        nextButton.setVisible(false);
+        nextButton.setDisable(true);
         toNextCard(actionEvent);
     }
 
-    private boolean isCloseEnough(String response, String answer){
+    private boolean isCloseEnough(String response, String answer)
+    {
         return typoCheck(response, answer) || thesaurusCheck(response, answer) || matchWithoutSyntax(response, answer);
     }
 
@@ -49,7 +70,8 @@ public class InputCardFrontController extends CardFront
         return answer.equals(response);
     }
 
-    private boolean thesaurusCheck(String response, String answer){
+    private boolean thesaurusCheck(String response, String answer)
+    {
         String[] ansWords = answer.split(" ");
 
         for (int i = 0; i < ansWords.length; i++)
@@ -58,7 +80,8 @@ public class InputCardFrontController extends CardFront
 
             for (String synonym : synonyms)
             {
-                if (response.contains(synonym)){
+                if (response.contains(synonym))
+                {
                     ansWords[i] = synonym;
                 }
             }
@@ -67,19 +90,21 @@ public class InputCardFrontController extends CardFront
         return response.equals(updatedAns);
     }
 
-    private boolean typoCheck(String response, String answer){
-         return false;
-         //TODO add this check
+    private boolean typoCheck(String response, String answer)
+    {
+        return false;
+        //TODO add this check
     }
 
-    private void finishReview(ActionEvent actionEvent) {
-        Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+    private void finishReview(ActionEvent actionEvent)
+    {
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         App.setRoot(currentStage.getScene(), "sessionFinished");
     }
 
     private void toNextCard(ActionEvent actionEvent)
     {
-        Stage currentStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         App.setRoot(currentStage.getScene(), "inputCardFront");
     }
 }

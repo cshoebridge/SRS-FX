@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 public abstract class CardFront implements Initializable
 {
     @FXML private Text targetLanguageSentenceText;
+    @FXML protected Text nativeLanguageSentenceText;
     protected Card cardToReview;
 
     @Override
@@ -22,5 +23,8 @@ public abstract class CardFront implements Initializable
         }
         cardToReview = CardSelector.chooseACard(Reviewer.getCardsToReviewToday());
         targetLanguageSentenceText.setText(cardToReview.getTargetLanguageSentence());
+        if (nativeLanguageSentenceText != null) {
+            nativeLanguageSentenceText.setText("");
+        }
     }
 }

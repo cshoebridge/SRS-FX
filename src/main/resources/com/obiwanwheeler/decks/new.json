@@ -1,0 +1,14 @@
+{
+  "deckName" : "new",
+  "cards" : [ {
+    "targetLanguageSentence" : "new card",
+    "imagePath" : null,
+    "state" : "LEARNT",
+    "initialViewDate" : "2021-03-18",
+    "daysFromFirstSeenToNextReview" : "P1D",
+    "nativeLanguageTranslation" : "new card"
+  } ],
+  "optionGroupFilePath" : null,
+  "newCardsLeft" : 14,
+  "lastDateReviewed" : "2021-03-18"
+}
